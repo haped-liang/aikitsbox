@@ -11,3 +11,5 @@ miniprogram_npm/
 *.p12
 credentials.json
 config.local.js
+.next/
+.claude/
