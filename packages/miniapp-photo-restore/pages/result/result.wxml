@@ -1,0 +1,48 @@
+<!-- 修复结果页 - 前后对比滑块 -->
+<view class="container">
+
+  <!-- 对比区 -->
+  <view class="compare-container">
+    <!-- 修复后（底层） -->
+    <image class="compare-img after-img" src="{{restoredPath}}" mode="aspectFit"/>
+
+    <!-- 修复前（上层，可裁剪） -->
+    <view class="before-clip" style="width:{{sliderPos}}%">
+      <image class="compare-img before-img" src="{{photoPath}}" mode="aspectFit"/>
+      <view class="before-label">修复前</view>
+    </view>
+
+    <!-- 滑块手柄 -->
+    <view class="slider-handle" style="left:{{sliderPos}}%">
+      <view class="handle-line"></view>
+      <view class="handle-btn">⟷</view>
+    </view>
+
+    <!-- 修复后标签 -->
+    <view class="after-label">修复后</view>
+  </view>
+
+  <!-- 滑块控制 -->
+  <view class="slider-control">
+    <text>← 滑动对比 →</text>
+    <slider min="10" max="90" value="{{sliderPos}}" block-size="20" activeColor="#5C4033" backgroundColor="#E0D5CC" bindchange="onSliderChange"/>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="actions">
+    <button class="btn-download" bindtap="downloadHD">
+      <view class="btn-main-text">💾 {{isHD?'保存到相册':'¥9.9 解锁高清下载'}}</view>
+      <view class="btn-sub-text" wx:if="{{!isHD}}">含4倍分辨率 · 无水印</view>
+    </button>
+    <view class="action-row">
+      <button class="btn-secondary" bindtap="goBack">🔄 修复另一张</button>
+      <button class="btn-primary" open-type="share">📤 分享给家人</button>
+    </view>
+  </view>
+
+  <!-- 底部文案 -->
+  <view class="emotional-text">
+    照片会泛黄，记忆不会。<br/>
+    把这份修复的感动，分享给你的家人吧 ❤️
+  </view>
+</view>

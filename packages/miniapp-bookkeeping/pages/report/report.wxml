@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="report-hero">
+    <view class="hero-month">{{month}}月</view>
+    <view class="hero-label">总支出</view>
+    <view class="hero-amount">¥{{totalExpense}}</view>
+    <view class="hero-avg">日均 ¥{{dailyAvg}}</view>
+  </view>
+
+  <view class="card" wx:if="{{aiAdvice}}">
+    <ai-label type="badge" show="{{true}}"/>
+    <view class="advice-text">{{aiAdvice}}</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">📊 分类占比</view>
+    <view wx:for="{{categoryBreakdown}}" wx:key="name" class="breakdown-item">
+      <view class="bd-left">
+        <view class="bd-name">{{item.name}}</view>
+        <view class="bd-bar-bg"><view class="bd-bar" style="width:{{item.percent}}%"></view></view>
+      </view>
+      <view class="bd-right">
+        <view class="bd-amount">¥{{item.amount}}</view>
+        <view class="bd-percent">{{item.percent}}%</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="vip-banner">
+    <view class="vip-text">👑 升级VIP · ¥19.9/月</view>
+    <view class="vip-desc">无限记账 + AI预算提醒 + 多账本 + 数据导出</view>
+  </view>
+</view>

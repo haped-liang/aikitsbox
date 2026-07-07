@@ -1,0 +1,29 @@
+.container{background:#F5F0EB;min-height:100vh;padding-bottom:60rpx}
+.hero{text-align:center;padding:48rpx 30rpx 30rpx;background:linear-gradient(180deg,#5C4033 0%,#6D4C41 60%,#F5F0EB 100%)}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);color:#FFD54F;padding:8rpx 24rpx;border-radius:20rpx;font-size:22rpx;margin-bottom:20rpx}
+.hero-title{font-size:48rpx;font-weight:700;color:#FFF;line-height:1.3;margin-bottom:12rpx}
+.hero-sub{font-size:26rpx;color:rgba(255,255,255,.7)}
+.showcase-section{padding:0 24rpx;margin-top:-20rpx;position:relative;z-index:1}
+.section-title{font-size:30rpx;font-weight:600;color:#3E2723;margin-bottom:20rpx}
+.showcase-swiper{height:380rpx;border-radius:20rpx;overflow:hidden}
+.showcase-card{background:#FFF;border-radius:20rpx;padding:20rpx;box-shadow:0 8rpx 30rpx rgba(62,39,35,.1)}
+.showcase-compare{display:flex;align-items:center;gap:12rpx}
+.compare-side{flex:1;text-align:center}
+.compare-label{font-size:22rpx;color:#999;margin-bottom:8rpx}.compare-label.after{color:#4CAF50}
+.compare-img{width:100%;height:200rpx;border-radius:12rpx;background:#F0E6DD}
+.compare-arrow{font-size:32rpx;color:#5C4033;flex-shrink:0}
+.showcase-desc{text-align:center;font-size:24rpx;color:#8D6E63;margin-top:12rpx}
+.action-section{padding:30rpx 24rpx}
+.btn-upload{width:100%;background:linear-gradient(135deg,#5C4033,#8D6E63);border-radius:24rpx;padding:48rpx 30rpx;text-align:center;color:#FFF;border:none;box-shadow:0 12rpx 40rpx rgba(92,64,51,.3)}
+.btn-upload:active{transform:scale(.97)}
+.btn-icon{font-size:64rpx;margin-bottom:12rpx}
+.btn-text{font-size:34rpx;font-weight:700;margin-bottom:8rpx}
+.btn-hint{font-size:24rpx;opacity:.7}
+.scenes{padding:0 24rpx;margin-bottom:30rpx}
+.scene-grid{display:flex;flex-wrap:wrap;gap:12rpx}
+.scene-item{background:#FFF;padding:14rpx 20rpx;border-radius:12rpx;font-size:24rpx;color:#5D4037}.scene-icon{margin-right:6rpx}
+.reviews{padding:0 24rpx;margin-bottom:30rpx}
+.review-card{background:#FFF;border-radius:16rpx;padding:24rpx;margin-bottom:16rpx;border-left:4rpx solid #5C4033}
+.review-text{font-size:28rpx;color:#3E2723;line-height:1.6;margin-bottom:10rpx}
+.review-author{font-size:24rpx;color:#8D6E63}
+.footer-note{text-align:center;font-size:22rpx;color:#999;padding:20rpx}

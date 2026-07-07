@@ -1,0 +1,137 @@
+/**
+ * AI起名大师 - 全局样式
+ * 设计语言：温暖、专业、中国风
+ */
+
+/* 颜色变量 */
+page {
+  --primary: #FF6B35;        /* 主色调：暖橙 */
+  --primary-dark: #E55A2B;   /* 深橙 */
+  --secondary: #FFF8F5;      /* 暖白背景 */
+  --gold: #D4A843;           /* 金色（高级感） */
+  --gold-light: #F5E6C8;     /* 浅金 */
+  --text-primary: #2C1810;   /* 主文字色 */
+  --text-secondary: #8B7355; /* 次要文字 */
+  --text-light: #BFBFBF;     /* 辅助文字 */
+  --success: #52C41A;        /* 成功绿 */
+  --bg-card: #FFFFFF;        /* 卡片背景 */
+  --border: #F0E6DD;         /* 边框 */
+
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB',
+               'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 28rpx;
+  color: var(--text-primary);
+  background-color: var(--secondary);
+  box-sizing: border-box;
+}
+
+/* 通用容器 */
+.container {
+  padding: 30rpx;
+  min-height: 100vh;
+}
+
+/* 卡片样式 */
+.card {
+  background: var(--bg-card);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 53, 0.08);
+}
+
+/* 主按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+  color: #FFFFFF;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  padding: 24rpx 60rpx;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 53, 0.3);
+  transition: all 0.3s;
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
+
+/* 金边按钮（高级功能） */
+.btn-gold {
+  background: linear-gradient(135deg, #D4A843 0%, #E8C97A 100%);
+  color: #FFFFFF;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  padding: 20rpx 48rpx;
+  border: none;
+  box-shadow: 0 6rpx 20rpx rgba(212, 168, 67, 0.3);
+}
+
+/* 次要按钮 */
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2rpx solid var(--primary);
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  padding: 20rpx 48rpx;
+}
+
+/* 标题 */
+.title-main {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+}
+
+.title-sub {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  margin-bottom: 40rpx;
+}
+
+/* 名字卡片特殊样式 */
+.name-card {
+  background: linear-gradient(135deg, #FFF8F3 0%, #FFFDF9 100%);
+  border: 2rpx solid var(--gold-light);
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.name-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, transparent 50%, rgba(212, 168, 67, 0.1) 50%);
+  border-radius: 0 0 0 80rpx;
+}
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.tag-primary {
+  background: rgba(255, 107, 53, 0.1);
+  color: var(--primary);
+}
+
+.tag-gold {
+  background: rgba(212, 168, 67, 0.15);
+  color: var(--gold);
+}

@@ -1,0 +1,10 @@
+{
+  "pages":["pages/index/index","pages/result/result","pages/vaccine/vaccine"],
+  "window":{"navigationBarBackgroundColor":"#FF9800","navigationBarTitleText":"AI宠物医生","navigationBarTextStyle":"white","backgroundColor":"#FFF9F0"},
+  "tabBar":{"color":"#999","selectedColor":"#FF9800","backgroundColor":"#FFF","list":[
+    {"pagePath":"pages/index/index","text":"自查","iconPath":"images/tab-check.png","selectedIconPath":"images/tab-check-active.png"},
+    {"pagePath":"pages/vaccine/vaccine","text":"疫苗","iconPath":"images/tab-vac.png","selectedIconPath":"images/tab-vac-active.png"}
+  ]},
+  "usingComponents":{"ai-label":"/components/ai-label/ai-label"},
+  "__usePrivacyCheck__":true,"style":"v2","sitemapLocation":"sitemap.json"
+}

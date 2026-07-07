@@ -1,0 +1,49 @@
+<view class="container">
+  <!-- 紧急警告 -->
+  <view wx:if="{{isEmergency}}" class="emergency-banner">
+    <view class="em-icon">🚨</view>
+    <view class="em-text">紧急情况！建议立即就医</view>
+    <view class="em-sub">以下症状可能危及宠物生命，请尽快联系最近的宠物医院</view>
+  </view>
+
+  <!-- 不紧急的标题 -->
+  <view wx:else class="result-hero">
+    <view class="hero-icon">{{severity>5?'😟':'😊'}}</view>
+    <view class="hero-urgency">{{urgency}}</view>
+    <view class="hero-severity">严重程度: {{severity}}/10</view>
+  </view>
+
+  <ai-label type="banner" show="{{true}}"/>
+
+  <!-- 可能原因 -->
+  <view class="card">
+    <view class="sec-title">🔍 可能的原因</view>
+    <view wx:for="{{causes}}" wx:key="*this" class="cause-item">▪ {{item}}</view>
+  </view>
+
+  <!-- 居家护理 -->
+  <view class="card">
+    <view class="sec-title">🏠 居家护理建议</view>
+    <view wx:for="{{homeCare}}" wx:key="*this" class="care-item">
+      <view class="care-num">{{index+1}}</view>
+      <view class="care-text">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 是否就医 -->
+  <view class="card {{needVet?'vet-yes':'vet-no'}}">
+    <view class="sec-title">{{needVet?'🏥 建议就医':'✅ 暂不需要就医'}}</view>
+    <view class="vet-reason">{{needVet?vetReason:'根据当前症状判断，可先居家观察。如症状持续或加重请及时就医。'}}</view>
+  </view>
+
+  <view class="bottom-btns">
+    <button class="btn-retry" bindtap="goBack">🔄 重新自查</button>
+    <button class="btn-vet" wx:if="{{needVet}}" bindtap="findVet">📍 查找附近宠物医院</button>
+    <button class="btn-share" open-type="share">📤 分享给宠友</button>
+  </view>
+
+  <view class="vip-banner">
+    <view>👑 VIP无限咨询 · ¥19.9/月</view>
+    <view class="vip-desc">健康档案+疫苗提醒+在线问诊</view>
+  </view>
+</view>

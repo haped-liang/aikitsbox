@@ -1,0 +1,13 @@
+<!-- AI内容显式标识组件 -->
+<view wx:if="{{show && type === 'banner'}}" class="ai-label-banner {{position}}">
+  <view class="ai-label-icon">🤖</view>
+  <view class="ai-label-text">{{text}}</view>
+</view>
+
+<view wx:if="{{show && type === 'badge'}}" class="ai-label-badge">
+  <text class="badge-text">AI生成</text>
+</view>
+
+<view wx:if="{{show && type === 'text'}}" class="ai-label-inline">
+  <text class="inline-text">*{{text}}</text>
+</view>

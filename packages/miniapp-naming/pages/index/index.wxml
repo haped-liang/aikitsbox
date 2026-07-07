@@ -1,0 +1,176 @@
+<!--
+  AI起名大师 - 首页
+  功能：起名类型选择 + 表单输入 → AI生成名字结果
+-->
+
+<view class="container">
+
+  <!-- ===== 顶部标题区 ===== -->
+  <view class="hero-section">
+    <view class="hero-icon">🐉</view>
+    <view class="title-main">AI 起名大师</view>
+    <view class="title-sub">千年文化底蕴 · 智能名字生成 · 为你找到最好的名字</view>
+
+    <!-- 剩余次数提示 -->
+    <view class="quota-badge" wx:if="{{remainingQuota > 0}}">
+      今日剩余 <text class="quota-num">{{remainingQuota}}</text> 次免费起名
+    </view>
+    <view class="quota-badge quota-empty" wx:else>
+      今日免费次数已用完，看广告获取更多
+    </view>
+  </view>
+
+  <!-- ===== 起名类型选择 ===== -->
+  <view class="card type-selector">
+    <view class="section-title">选择起名类型</view>
+    <view class="type-grid">
+      <view
+        wx:for="{{namingTypes}}"
+        wx:key="id"
+        class="type-item {{item.active ? 'type-active' : ''}}"
+        data-type="{{item.id}}"
+        bindtap="switchType"
+      >
+        <view class="type-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 输入表单区 ===== -->
+  <view class="card form-section">
+
+    <!-- 姓氏输入 (宝宝起名) -->
+    <view wx:if="{{activeType === 'baby'}}" class="form-group">
+      <view class="form-label">
+        <text class="required">*</text> 姓氏
+      </view>
+      <input
+        class="form-input"
+        placeholder="请输入姓氏（如：张、李、王）"
+        maxlength="2"
+        value="{{surname}}"
+        bindinput="onSurnameInput"
+      />
+      <view class="form-hint">只输入姓氏即可，AI会生成完整的名字</view>
+    </view>
+
+    <!-- 性别选择 (宝宝起名) -->
+    <view wx:if="{{activeType === 'baby'}}" class="form-group">
+      <view class="form-label">宝宝性别</view>
+      <view class="option-row">
+        <view
+          wx:for="{{genderOptions}}"
+          wx:key="id"
+          class="option-item {{item.active ? 'option-active' : ''}}"
+          data-gender="{{item.id}}"
+          bindtap="selectGender"
+        >{{item.name}}</view>
+      </view>
+    </view>
+
+    <!-- 行业输入 (公司起名) -->
+    <view wx:if="{{activeType === 'company'}}" class="form-group">
+      <view class="form-label">
+        <text class="required">*</text> 公司类型/行业
+      </view>
+      <input
+        class="form-input"
+        placeholder="如：科技、教育、餐饮、电商..."
+        value="{{requirements}}"
+        bindinput="onRequirementsInput"
+      />
+    </view>
+
+    <!-- 产品类型输入 (品牌起名) -->
+    <view wx:if="{{activeType === 'brand'}}" class="form-group">
+      <view class="form-label">产品/品牌类型</view>
+      <input
+        class="form-input"
+        placeholder="如：护肤品、咖啡店、服装品牌..."
+        value="{{requirements}}"
+        bindinput="onRequirementsInput"
+      />
+    </view>
+
+    <!-- 风格选择 -->
+    <view class="form-group">
+      <view class="form-label">风格偏好</view>
+      <view class="option-row">
+        <view
+          wx:for="{{styles}}"
+          wx:key="id"
+          class="option-item {{item.active ? 'option-active' : ''}}"
+          data-style="{{item.id}}"
+          bindtap="selectStyle"
+        >{{item.name}}</view>
+      </view>
+    </view>
+
+    <!-- 额外要求 -->
+    <view class="form-group">
+      <view class="form-label">额外要求（选填）</view>
+      <textarea
+        class="form-textarea"
+        placeholder="例如：想要带"水"偏旁的字、希望名字有诗词典故、要求三字名..."
+        maxlength="100"
+        value="{{requirements}}"
+        bindinput="onRequirementsInput"
+      />
+    </view>
+  </view>
+
+  <!-- ===== 热门搜索 ===== -->
+  <view class="card">
+    <view class="section-title">🔥 大家都在搜</view>
+    <view class="hot-tags">
+      <view
+        wx:for="{{hotSearches}}"
+        wx:key="*this"
+        class="tag tag-primary"
+        data-keyword="{{item}}"
+        bindtap="onHotSearch"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <!-- ===== 开始起名按钮 ===== -->
+  <view class="action-section">
+    <button
+      class="btn-primary btn-start"
+      bindtap="startNaming"
+      loading="{{isGenerating}}"
+      disabled="{{isGenerating}}"
+    >
+      {{isGenerating ? 'AI正在精心起名...' : '✨ 开始智能起名'}}
+    </button>
+    <view class="action-hint">
+      每日免费3次 · AI智能分析 · 5秒出结果
+    </view>
+  </view>
+
+  <!-- ===== 广告提示弹窗 ===== -->
+  <view class="modal-mask" wx:if="{{showAdTip}}" bindtap="hideAdTip">
+    <view class="modal-content" catchtap="preventBubble">
+      <view class="modal-title">今日免费次数已用完 🥺</view>
+      <view class="modal-body">
+        <view class="modal-option" bindtap="watchAd">
+          <view class="option-icon">📺</view>
+          <view class="option-text">
+            <view class="option-title">观看15秒视频</view>
+            <view class="option-desc">获得3次额外起名机会</view>
+          </view>
+        </view>
+        <view class="modal-divider">或</view>
+        <view class="modal-option gold" bindtap="upgradeVIP">
+          <view class="option-icon">👑</view>
+          <view class="option-text">
+            <view class="option-title">升级VIP会员</view>
+            <view class="option-desc">¥19.9/月，无限起名 + 深度分析</view>
+          </view>
+        </view>
+      </view>
+      <view class="modal-close" bindtap="hideAdTip">稍后再说</view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,52 @@
+<!-- AI宠物医生 - 首页 -->
+<view class="container">
+
+  <!-- 顶部 -->
+  <view class="hero">
+    <view class="hero-icon">🐾</view>
+    <view class="hero-title">AI宠物医生</view>
+    <view class="hero-sub">症状自查 · 护理建议 · 疫苗提醒</view>
+    <view class="quota">今日剩余 <text class="q-num">{{quota}}</text> 次免费咨询</view>
+  </view>
+
+  <!-- Step 1: 选宠物 -->
+  <view wx:if="{{step===1}}" class="card">
+    <view class="step-title">第一步：选择宠物类型</view>
+    <view class="pet-grid">
+      <view wx:for="{{petTypes}}" wx:key="*this" class="pet-chip" data-type="{{item}}" bindtap="selectPet">{{item}}</view>
+    </view>
+  </view>
+
+  <!-- Step 2: 选症状 -->
+  <view wx:if="{{step===2}}" class="card">
+    <view class="step-title">第二步：宠物基本信息</view>
+    <view class="info-row">
+      <input class="info-input" placeholder="年龄(如:2岁/6个月)" value="{{petAge}}" bindinput="onAgeInput"/>
+      <input class="info-input" placeholder="品种(如:金毛/英短)" value="{{petBreed}}" bindinput="onBreedInput"/>
+      <input class="info-input" placeholder="体重(如:5kg)" value="{{petWeight}}" bindinput="onWeightInput"/>
+    </view>
+
+    <view class="step-title" style="margin-top:30rpx">第三步：选择症状（可多选）</view>
+    <view wx:for="{{symptomGroups}}" wx:key="name" class="symptom-group">
+      <view class="group-name">{{item.name}}</view>
+      <view class="symptom-chips">
+        <view wx:for="{{item.items}}" wx:key="*this" wx:for-item="s" class="s-chip {{selectedSymptoms.indexOf(s)>-1?'active':''}}" data-symptom="{{s}}" bindtap="toggleSymptom">{{s}}</view>
+      </view>
+    </view>
+
+    <view class="step-title">持续多久？</view>
+    <view class="duration-row">
+      <view wx:for="{{durations}}" wx:key="*this" class="d-chip {{duration===item?'active':''}}" data-d="{{item}}" bindtap="selectDuration">{{item}}</view>
+    </view>
+
+    <textarea class="extra-input" placeholder="补充说明（选填）：如近期饮食变化、是否用药等" value="{{extraNote}}" bindinput="onNoteInput"/>
+
+    <view class="step-btns">
+      <button class="btn-back" bindtap="back">← 上一步</button>
+      <button class="btn-go" bindtap="startAnalysis" loading="{{isAnalyzing}}">🤖 AI分析 · 共{{selectedSymptoms.length}}项症状</button>
+    </view>
+  </view>
+
+  <!-- 免责声明 -->
+  <view class="disclaimer">⚠️ 本工具仅提供参考建议，不能替代专业兽医诊断。如宠物出现紧急症状，请立即就医。</view>
+</view>

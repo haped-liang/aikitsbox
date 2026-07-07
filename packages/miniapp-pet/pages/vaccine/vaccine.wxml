@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="hero">💉 疫苗接种提醒</view>
+  <view class="card">
+    <view class="sec-title">选择宠物类型</view>
+    <view class="pet-row">
+      <view wx:for="{{['🐶 狗狗','🐱 猫猫','🐰 兔兔']}}" wx:key="*this" class="pet-chip {{petType===item?'active':''}}" data-type="{{item}}" bindtap="selectPet">{{item}}</view>
+    </view>
+  </view>
+  <view wx:if="{{showSchedule}}" class="card">
+    <view class="sec-title">{{petType}} 疫苗接种时间表</view>
+    <view wx:for="{{currentSchedule}}" wx:key="name" class="vac-item {{item.done?'done':''}}">
+      <view class="vac-check" data-idx="{{index}}" bindtap="toggleDone">{{item.done?'✅':'⬜'}}</view>
+      <view class="vac-info">
+        <view class="vac-name">{{item.name}}</view>
+        <view class="vac-age">{{item.age}} · {{item.note}}</view>
+      </view>
+    </view>
+  </view>
+</view>

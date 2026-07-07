@@ -1,0 +1,91 @@
+<!--
+  结果页 - AI生成的名字列表
+-->
+
+<view class="container">
+
+  <!-- ===== 顶部总结 ===== -->
+  <view class="result-header">
+    <view class="result-icon">✨</view>
+    <view class="result-title">
+      AI为你精心挑选了 <text class="highlight">{{names.length}}</text> 个好名字
+    </view>
+    <view class="result-subtitle">
+      {{surname ? '姓「' + surname + '」·' : ''}}{{gender ? gender + '·' : ''}}{{style}}风格
+    </view>
+  </view>
+
+  <!-- ===== 名字列表 ===== -->
+  <view class="name-list">
+    <view
+      wx:for="{{names}}"
+      wx:key="name"
+      class="name-card {{index >= 3 && !unlockedAll ? 'locked' : ''}}"
+      data-index="{{index}}"
+      bindtap="viewDetail"
+    >
+
+      <!-- 排名标识 -->
+      <view class="rank-badge rank-{{index + 1}}">
+        {{index === 0 ? '👑' : (index === 1 ? '🥈' : (index === 2 ? '🥉' : index + 1))}}
+      </view>
+
+      <!-- 名字 -->
+      <view class="name-text">{{item.name}}</view>
+
+      <!-- 评分 -->
+      <view class="score-badge">
+        <text class="score-num">{{item.score}}</text>
+        <text class="score-unit">分</text>
+      </view>
+
+      <!-- 寓意简写 -->
+      <view class="name-meaning-short">{{item.meaning}}</view>
+
+      <!-- 底部操作栏 -->
+      <view class="name-actions">
+        <view class="name-tags">
+          <text class="tag tag-primary">{{item.style === 'modern' ? '现代' : item.style === 'classic' ? '古典' : item.style === 'simple' ? '简洁' : '个性'}}</text>
+          <text class="tag tag-gold" wx:if="{{item.wuxing}}">{{item.wuxing}}</text>
+        </view>
+        <view class="name-btns">
+          <view
+            class="fav-btn {{favorites[item.name] ? 'faved' : ''}}"
+            data-index="{{index}}"
+            catchtap="toggleFavorite"
+          >{{favorites[item.name] ? '❤️' : '🤍'}}</view>
+          <view class="detail-btn">查看详情 →</view>
+        </view>
+      </view>
+
+      <!-- 锁定遮罩 -->
+      <view wx:if="{{index >= 3 && !unlockedAll}}" class="lock-mask">
+        <view class="lock-content">
+          <view class="lock-icon">🔒</view>
+          <view class="lock-text">看广告免费解锁</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- ===== 底部操作 ===== -->
+  <view class="bottom-actions">
+    <button class="btn-outline btn-regenerate" bindtap="regenerate">
+      🔄 换一批
+    </button>
+    <button class="btn-primary btn-share" open-type="share">
+      📤 分享给好友
+    </button>
+  </view>
+
+  <!-- ===== 升级VIP提示 ===== -->
+  <view class="vip-banner" wx:if="{{!unlockedAll}}">
+    <view class="vip-icon">👑</view>
+    <view class="vip-text">
+      <view class="vip-title">升级VIP · 无限起名</view>
+      <view class="vip-desc">¥19.9/月，解锁深度八字分析、名字收藏夹</view>
+    </view>
+    <view class="vip-arrow">→</view>
+  </view>
+
+</view>

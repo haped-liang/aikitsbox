@@ -1,0 +1,7 @@
+.container{padding:24rpx;background:#F5F0EB;min-height:100vh}
+.title{font-size:36rpx;font-weight:700;color:#3E2723;padding:20rpx 0 30rpx}
+.empty{text-align:center;padding:120rpx 0}.empty-icon{font-size:80rpx;margin-bottom:20rpx}.empty-text{font-size:30rpx;color:#8D6E63;margin-bottom:8rpx}.empty-hint{font-size:24rpx;color:#BCAAA4}
+.grid{display:flex;flex-wrap:wrap;gap:16rpx}
+.item{width:calc(50% - 8rpx);border-radius:16rpx;overflow:hidden;background:#FFF}
+.item image{width:100%;height:300rpx}
+.item-date{font-size:22rpx;color:#8D6E63;padding:12rpx 16rpx}

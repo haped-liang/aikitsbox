@@ -1,0 +1,59 @@
+<!-- 隐私政策 -->
+<scroll-view class="container" scroll-y>
+  <view class="policy-header">
+    <view class="policy-title">隐私政策</view>
+    <view class="policy-meta">最后更新：{{lastUpdated}} | 版本 {{version}}</view>
+  </view>
+
+  <view class="policy-section">
+    <view class="section-title">一、我们收集的信息</view>
+    <view class="section-text">
+      起名大师（以下简称"我们"）仅收集为您提供AI起名服务所必需的最小化信息：
+      <view class="list-item">· 您主动输入的姓氏、性别偏好、起名要求</view>
+      <view class="list-item">· 您收藏的名字记录（存储在您的设备本地）</view>
+      <view class="list-item">· 您的小程序使用日志（仅用于改善服务）</view>
+    </view>
+  </view>
+
+  <view class="policy-section">
+    <view class="section-title">二、AI服务说明</view>
+    <view class="section-text">
+      本小程序使用腾讯混元大模型提供AI起名服务。
+      <view class="list-item">· 您输入的信息会被发送至AI服务器进行处理</view>
+      <view class="list-item">· AI生成的结果仅供参考，不构成专业建议</view>
+      <view class="list-item">· 所有AI生成内容均有明确标识</view>
+      <view class="list-item">· 我们不会使用您的数据训练AI模型</view>
+    </view>
+  </view>
+
+  <view class="policy-section">
+    <view class="section-title">三、信息存储与安全</view>
+    <view class="section-text">
+      <view class="list-item">· 您的起名记录默认存储在手机本地，您可以随时删除</view>
+      <view class="list-item">· 我们采用加密传输保护您的数据</view>
+      <view class="list-item">· 我们不会将您的个人信息出售或分享给第三方</view>
+    </view>
+  </view>
+
+  <view class="policy-section">
+    <view class="section-title">四、您的权利</view>
+    <view class="section-text">
+      <view class="list-item">· 您可以在"历史"页面删除收藏的名字</view>
+      <view class="list-item">· 您可以随时停止使用本小程序</view>
+      <view class="list-item">· 如有隐私问题，请联系我们</view>
+    </view>
+  </view>
+
+  <view class="policy-section">
+    <view class="section-title">五、免责声明</view>
+    <view class="section-text">
+      AI生成的起名建议基于算法和历史数据，不保证绝对准确性。名字的选择属于个人偏好和文化判断，我们不对您最终选择的名字承担任何责任。
+    </view>
+  </view>
+
+  <view class="policy-footer">
+    <view class="footer-text">深圳市格涅科技有限公司</view>
+    <view class="footer-text">联系邮箱：privacy@gagne-tech.com（注册后更新）</view>
+    <view class="footer-text">© 2026 Gagne Tech. All rights reserved.</view>
+  </view>
+</scroll-view>

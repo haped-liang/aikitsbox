@@ -1,0 +1,79 @@
+<!-- AI记账管家 - 首页 -->
+<view class="container">
+
+  <!-- 顶部：今日概览 -->
+  <view class="today-hero">
+    <view class="today-label">今日支出</view>
+    <view class="today-amount">¥{{todayTotal.toFixed(2)}}</view>
+    <view class="today-count">共{{todayRecords.length}}笔 · 剩余{{quota}}次免费</view>
+  </view>
+
+  <!-- 快捷金额 -->
+  <view class="quick-amounts">
+    <view wx:for="{{quickAmounts}}" wx:key="*this" class="quick-btn" data-amt="{{item}}" bindtap="quickAmount">¥{{item}}</view>
+  </view>
+
+  <!-- 输入模式切换 -->
+  <view class="mode-tabs">
+    <view class="mode-tab {{inputMode==='voice'?'active':''}}" bindtap="setInputMode" data-mode="voice">🎤 语音</view>
+    <view class="mode-tab {{inputMode==='photo'?'active':''}}" bindtap="setInputMode" data-mode="photo">📷 拍照</view>
+    <view class="mode-tab {{inputMode==='manual'?'active':''}}" bindtap="setInputMode" data-mode="manual">✏️ 手动</view>
+  </view>
+
+  <!-- 🎤 语音模式 -->
+  <view wx:if="{{inputMode==='voice'}}" class="voice-area">
+    <view class="voice-btn {{isRecording?'recording':''}}" bindtap="startRecord" bindlongpress="startRecord">
+      <view class="voice-icon">🎤</view>
+      <view class="voice-text">{{isRecording ? '正在聆听...' : '按住说话'}}</view>
+      <view class="voice-hint">例如："午饭花了35块"</view>
+    </view>
+  </view>
+
+  <!-- 📷 拍照模式 -->
+  <view wx:if="{{inputMode==='photo'}}" class="photo-area">
+    <view class="photo-btn" bindtap="takePhoto">
+      <view class="photo-icon">📷</view>
+      <view class="photo-text">拍小票/收据</view>
+    </view>
+  </view>
+
+  <!-- ✏️ 手动模式 -->
+  <view wx:if="{{inputMode==='manual'}}" class="manual-form">
+    <view class="amount-row">
+      <text class="currency">¥</text>
+      <input class="amount-input" placeholder="0.00" value="{{amount}}" bindinput="onAmountInput" type="digit" focus/>
+    </view>
+    <scroll-view class="cat-scroll" scroll-x>
+      <view wx:for="{{categories}}" wx:key="*this" class="cat-chip {{category===item?'active':''}}" data-cat="{{item}}" bindtap="selectCategory">{{item}}</view>
+    </scroll-view>
+    <input class="note-input" placeholder="备注（选填）" value="{{note}}" bindinput="onNoteInput"/>
+    <button class="btn-save" bindtap="manualSave">💾 保存</button>
+  </view>
+
+  <!-- AI确认弹窗 -->
+  <view wx:if="{{showAiConfirm}}" class="ai-confirm-card">
+    <ai-label type="badge" show="{{true}}"/>
+    <view class="ai-confirm-amount">¥{{aiResult.amount}}</view>
+    <view class="ai-confirm-cat">{{aiResult.category}}</view>
+    <view class="ai-confirm-note" wx:if="{{aiResult.note}}">{{aiResult.note}}</view>
+    <view class="ai-confirm-btns">
+      <button class="btn-cancel" bindtap="cancelAi">✗ 不对</button>
+      <button class="btn-confirm" bindtap="confirmAiResult">✓ 确认</button>
+    </view>
+  </view>
+
+  <!-- 今日流水 -->
+  <view wx:if="{{todayRecords.length>0}}" class="today-list">
+    <view class="section-title">📋 今日流水</view>
+    <view wx:for="{{todayRecords}}" wx:key="id" class="record-item">
+      <view class="record-left">
+        <view class="record-cat">{{item.category}}</view>
+        <view class="record-note" wx:if="{{item.note}}">{{item.note}}</view>
+      </view>
+      <view class="record-right">
+        <view class="record-amount">-¥{{item.amount}}</view>
+        <view class="record-time">{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+</view>

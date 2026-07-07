@@ -1,0 +1,10 @@
+.page-header { padding: 40rpx 0 20rpx; text-align: center; }
+.empty-state { text-align: center; padding: 120rpx 40rpx; }
+.empty-icon { font-size: 80rpx; margin-bottom: 20rpx; }
+.empty-text { font-size: 30rpx; color: #8B7355; margin-bottom: 12rpx; }
+.empty-hint { font-size: 24rpx; color: #BFBFBF; }
+.name-meta { display: flex; justify-content: space-between; font-size: 22rpx; color: #BFBFBF; margin-top: 12rpx; }
+.score { color: #FF6B35; }
+.bottom-bar { display: flex; gap: 20rpx; padding: 30rpx 0 60rpx; }
+.bottom-bar .btn-outline { flex: 1; height: 80rpx; line-height: 80rpx; text-align: center; }
+.bottom-bar .btn-primary { flex: 2; height: 80rpx; line-height: 80rpx; text-align: center; }

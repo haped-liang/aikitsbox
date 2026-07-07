@@ -1,0 +1,43 @@
+<!-- 名字详情页 -->
+<view class="container">
+  <!-- 名字大标题 -->
+  <view class="detail-hero">
+    <view class="detail-name">{{nameData.name}}</view>
+    <view class="detail-score">综合评分 <text class="big-score">{{nameData.score}}</text> 分</view>
+    <view class="detail-meaning">{{nameData.meaning}}</view>
+  </view>
+
+  <!-- 基本信息卡片 -->
+  <view class="card">
+    <view class="section-title">📖 出处典故</view>
+    <view class="info-text">{{nameData.source || '现代创意命名，融合传统音韵美学'}}</view>
+  </view>
+
+  <view class="card" wx:if="{{nameData.wuxing}}">
+    <view class="section-title">🔮 五行分析</view>
+    <view class="info-text">{{nameData.wuxing}}</view>
+  </view>
+
+  <!-- 深度分析（需付费解锁） -->
+  <view class="card locked-section" wx:if="{{!showFullAnalysis}}">
+    <view class="lock-header">
+      <view class="section-title">🔐 深度八字分析</view>
+      <view class="vip-tag">VIP</view>
+    </view>
+    <view class="locked-preview">
+      <view class="preview-item">▪ 八字排盘与五行缺失</view>
+      <view class="preview-item">▪ 三才五格数理分析</view>
+      <view class="preview-item">▪ 生肖喜忌与用字建议</view>
+      <view class="preview-item">▪ 音律与字形搭配评分</view>
+      <view class="preview-item">▪ 未来运势与名字关联</view>
+    </view>
+    <button class="btn-gold unlock-btn" bindtap="unlockFullAnalysis">
+      👑 ¥9.9 解锁完整分析
+    </button>
+  </view>
+
+  <!-- 分享按钮 -->
+  <button class="btn-primary share-btn" open-type="share">
+    📤 分享这个好名字
+  </button>
+</view>

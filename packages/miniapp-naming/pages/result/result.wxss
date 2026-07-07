@@ -1,0 +1,197 @@
+/* 结果页样式 */
+
+.result-header {
+  text-align: center;
+  padding: 40rpx 0 30rpx;
+}
+
+.result-icon {
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+}
+
+.result-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2C1810;
+  margin-bottom: 12rpx;
+}
+
+.highlight {
+  color: #FF6B35;
+  font-size: 40rpx;
+}
+
+.result-subtitle {
+  font-size: 26rpx;
+  color: #8B7355;
+}
+
+/* 名字列表 */
+.name-list {
+  margin-top: 20rpx;
+}
+
+/* 排名标识 */
+.rank-badge {
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  font-size: 36rpx;
+  z-index: 2;
+}
+
+.rank-1 { font-size: 44rpx; }
+.rank-2 { font-size: 36rpx; }
+.rank-3 { font-size: 36rpx; }
+
+/* 名字文本 */
+.name-text {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #2C1810;
+  text-align: center;
+  padding: 20rpx 0 10rpx;
+  letter-spacing: 8rpx;
+}
+
+/* 评分 */
+.score-badge {
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.score-num {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #FF6B35;
+}
+
+.score-unit {
+  font-size: 24rpx;
+  color: #FF6B35;
+}
+
+/* 寓意 */
+.name-meaning-short {
+  text-align: center;
+  font-size: 26rpx;
+  color: #8B7355;
+  margin-bottom: 20rpx;
+  padding: 0 20rpx;
+}
+
+/* 操作栏 */
+.name-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name-btns {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.fav-btn {
+  font-size: 36rpx;
+  padding: 8rpx;
+}
+
+.detail-btn {
+  font-size: 24rpx;
+  color: #FF6B35;
+  font-weight: 500;
+}
+
+/* 锁定状态 */
+.name-card.locked {
+  filter: blur(0);
+  position: relative;
+}
+
+.lock-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6rpx);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lock-content {
+  text-align: center;
+}
+
+.lock-icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.lock-text {
+  font-size: 24rpx;
+  color: #8B7355;
+}
+
+/* 底部操作 */
+.bottom-actions {
+  display: flex;
+  gap: 20rpx;
+  padding: 30rpx 0 20rpx;
+}
+
+.btn-regenerate {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.btn-share {
+  flex: 2;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+/* VIP横幅 */
+.vip-banner {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #2C1810 0%, #4A3020 100%);
+  border-radius: 20rpx;
+  padding: 24rpx 30rpx;
+  margin: 20rpx 0 40rpx;
+}
+
+.vip-icon {
+  font-size: 48rpx;
+  margin-right: 20rpx;
+}
+
+.vip-text {
+  flex: 1;
+}
+
+.vip-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #D4A843;
+  margin-bottom: 6rpx;
+}
+
+.vip-desc {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.vip-arrow {
+  font-size: 32rpx;
+  color: #D4A843;
+}

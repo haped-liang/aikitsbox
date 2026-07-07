@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- 照片预览 -->
+  <view class="photo-preview">
+    <image class="photo" src="{{photoPath}}" mode="aspectFit"/>
+    <view class="photo-overlay {{progress>=100?'done':''}}">
+      <view class="overlay-scan" wx:if="{{progress<100}}"></view>
+    </view>
+  </view>
+
+  <!-- 进度条 -->
+  <view class="progress-section">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width:{{progress}}%"></view>
+    </view>
+    <view class="progress-text">{{progress}}%</view>
+  </view>
+
+  <!-- 当前步骤 -->
+  <view class="step-display">
+    <view class="step-icon">{{steps[step].icon}}</view>
+    <view class="step-text">{{steps[step].text}}</view>
+    <view class="step-detail" wx:if="{{steps[step].detail}}">{{steps[step].detail}}</view>
+  </view>
+
+  <!-- 情感提示语 -->
+  <view class="tip-text" wx:if="{{progress<100}}">💭 {{tips[currentTip]}}</view>
+
+  <!-- 完成按钮 -->
+  <view wx:if="{{progress>=100}}" class="done-section">
+    <button class="btn-view" bindtap="viewResult">✨ 查看修复效果</button>
+  </view>
+</view>

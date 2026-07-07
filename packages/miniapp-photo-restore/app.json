@@ -1,0 +1,9 @@
+{
+  "pages":["pages/index/index","pages/processing/processing","pages/result/result","pages/history/history"],
+  "window":{"navigationBarBackgroundColor":"#5C4033","navigationBarTitleText":"老照片修复","navigationBarTextStyle":"white","backgroundColor":"#F5F0EB"},
+  "tabBar":{"color":"#999","selectedColor":"#5C4033","backgroundColor":"#FFF","list":[
+    {"pagePath":"pages/index/index","text":"修复","iconPath":"images/tab-restore.png","selectedIconPath":"images/tab-restore-active.png"},
+    {"pagePath":"pages/history/history","text":"相册","iconPath":"images/tab-album.png","selectedIconPath":"images/tab-album-active.png"}
+  ]},
+  "style":"v2","sitemapLocation":"sitemap.json"
+}

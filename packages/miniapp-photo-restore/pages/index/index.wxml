@@ -1,0 +1,73 @@
+<!-- AI老照片修复 - 首页 -->
+<view class="container">
+
+  <!-- 顶部情感区 -->
+  <view class="hero">
+    <view class="hero-badge">🕰️ 今日免费 {{quota}} 次</view>
+    <view class="hero-title">让模糊的记忆<br/>重新清晰</view>
+    <view class="hero-sub">AI智能修复 · 降噪 · 上色 · 增强</view>
+  </view>
+
+  <!-- 案例展示轮播 -->
+  <view class="showcase-section">
+    <view class="section-title">✨ 修复效果预览</view>
+    <swiper class="showcase-swiper" indicator-dots autoplay interval="3000" bindchange="onSwiperChange">
+      <swiper-item wx:for="{{showcase}}" wx:key="desc">
+        <view class="showcase-card">
+          <view class="showcase-compare">
+            <view class="compare-side">
+              <view class="compare-label">修复前</view>
+              <image class="compare-img" src="{{item.before}}" mode="aspectFill"/>
+            </view>
+            <view class="compare-arrow">→</view>
+            <view class="compare-side">
+              <view class="compare-label after">修复后</view>
+              <image class="compare-img" src="{{item.after}}" mode="aspectFill"/>
+            </view>
+          </view>
+          <view class="showcase-desc">{{item.desc}}</view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 核心操作区 -->
+  <view class="action-section">
+    <button class="btn-upload" bindtap="choosePhoto">
+      <view class="btn-icon">📷</view>
+      <view class="btn-text">选择老照片开始修复</view>
+      <view class="btn-hint">支持各种老旧、模糊、破损照片</view>
+    </button>
+  </view>
+
+  <!-- 适用场景 -->
+  <view class="scenes">
+    <view class="section-title">📸 适合修复的照片</view>
+    <view class="scene-grid">
+      <view class="scene-item"><view class="scene-icon">👴</view>爷爷奶奶的老照片</view>
+      <view class="scene-item"><view class="scene-icon">👶</view>自己小时候的模糊照</view>
+      <view class="scene-item"><view class="scene-icon">📜</view>褪色的黑白结婚照</view>
+      <view class="scene-item"><view class="scene-icon">🖼️</view>折痕/破损的旧照</view>
+      <view class="scene-item"><view class="scene-icon">🎞️</view>胶片扫描的底片照</view>
+      <view class="scene-item"><view class="scene-icon">📱</view>翻拍屏幕的模糊照</view>
+    </view>
+  </view>
+
+  <!-- 用户评价 -->
+  <view class="reviews">
+    <view class="section-title">💬 用户怎么说</view>
+    <view class="review-card">
+      <view class="review-text">"把爷爷年轻时的照片修复了，拿给90岁的爷爷看，他哭了...这是我花过最值的9块9。"</view>
+      <view class="review-author">—— 小王，深圳</view>
+    </view>
+    <view class="review-card">
+      <view class="review-text">"爸妈的结婚照只有一张黑白的，修复上色后打印出来挂在家里，他们高兴坏了。"</view>
+      <view class="review-author">—— 小林，杭州</view>
+    </view>
+  </view>
+
+  <!-- 底部提示 -->
+  <view class="footer-note">
+    🔒 隐私保护：您的照片仅用于修复处理，完成后自动删除
+  </view>
+</view>

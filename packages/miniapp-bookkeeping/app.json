@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/report/report",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4CAF50",
+    "navigationBarTitleText": "AI记账管家",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F9F5"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#4CAF50",
+    "backgroundColor": "#FFF",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "记账", "iconPath": "images/tab-add.png", "selectedIconPath": "images/tab-add-active.png" },
+      { "pagePath": "pages/report/report", "text": "报表", "iconPath": "images/tab-chart.png", "selectedIconPath": "images/tab-chart-active.png" }
+    ]
+  },
+  "usingComponents": { "ai-label": "/components/ai-label/ai-label" },
+  "__usePrivacyCheck__": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

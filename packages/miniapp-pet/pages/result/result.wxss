@@ -1,0 +1,10 @@
+.container{padding:24rpx;background:#FFF9F0;min-height:100vh}
+.emergency-banner{background:linear-gradient(135deg,#D32F2F,#F44336);border-radius:20rpx;padding:32rpx;text-align:center;color:#fff;margin-bottom:24rpx}.em-icon{font-size:60rpx}.em-text{font-size:34rpx;font-weight:700;margin:12rpx 0}.em-sub{font-size:24rpx;opacity:.9}
+.result-hero{text-align:center;padding:30rpx 0}.hero-icon{font-size:80rpx}.hero-urgency{font-size:36rpx;font-weight:700;color:#E65100;margin:12rpx 0}.hero-severity{font-size:26rpx;color:#8D6E63}
+.card{background:#fff;border-radius:16rpx;padding:24rpx;margin-bottom:20rpx}.sec-title{font-size:30rpx;font-weight:600;color:#333;margin-bottom:16rpx}
+.cause-item{font-size:28rpx;color:#555;padding:8rpx 0;line-height:1.6}
+.care-item{display:flex;align-items:flex-start;margin-bottom:16rpx;gap:12rpx}.care-num{width:40rpx;height:40rpx;background:#FFF3E0;border-radius:50%;text-align:center;line-height:40rpx;font-size:24rpx;color:#E65100;flex-shrink:0}.care-text{font-size:28rpx;color:#555;line-height:1.5}
+.vet-yes{border:2rpx solid #F44336}.vet-no{border:2rpx solid #4CAF50}.vet-reason{font-size:26rpx;color:#666;line-height:1.6}
+.bottom-btns{display:flex;flex-direction:column;gap:16rpx;margin-bottom:24rpx}.bottom-btns button{width:100%;height:80rpx;line-height:80rpx;border-radius:40rpx;font-size:28rpx}
+.btn-retry{background:#F5F5F5;color:#666}.btn-vet{background:#FF9800;color:#fff}.btn-share{background:linear-gradient(135deg,#FF9800,#FFB74D);color:#fff;font-weight:600}
+.vip-banner{text-align:center;background:linear-gradient(135deg,#4A2C10,#6D3A1A);color:#FFB74D;border-radius:16rpx;padding:24rpx;font-size:28rpx;font-weight:600}.vip-desc{font-size:22rpx;opacity:.7;margin-top:6rpx}

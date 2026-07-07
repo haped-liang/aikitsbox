@@ -1,0 +1,29 @@
+<!-- 收藏历史 -->
+<view class="container">
+  <view class="page-header">
+    <view class="title-main">❤️ 我的收藏</view>
+    <view class="title-sub" wx:if="{{!isEmpty}}">共收藏了 {{favorites.length}} 个好名字</view>
+  </view>
+
+  <view wx:if="{{isEmpty}}" class="empty-state">
+    <view class="empty-icon">📭</view>
+    <view class="empty-text">还没有收藏任何名字</view>
+    <view class="empty-hint">在起名结果页点击 ❤️ 即可收藏喜欢的名字</view>
+  </view>
+
+  <view wx:else class="fav-list">
+    <view wx:for="{{favorites}}" wx:key="name" class="name-card">
+      <view class="name-text">{{item.name}}</view>
+      <view class="name-meaning">{{item.meaning}}</view>
+      <view class="name-meta">
+        <text class="score">💯 {{item.score}}分</text>
+        <text class="time">{{item.favoritedAt}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-bar" wx:if="{{!isEmpty}}">
+    <button class="btn-outline" bindtap="clearAll">清空全部</button>
+    <button class="btn-primary" open-type="share">分享给好友</button>
+  </view>
+</view>

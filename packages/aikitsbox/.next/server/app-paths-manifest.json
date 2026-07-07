@@ -1,0 +1,6 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/restore/route": "app/api/restore/route.js",
+  "/tools/photo-restore/page": "app/tools/photo-restore/page.js",
+  "/page": "app/page.js"
+}

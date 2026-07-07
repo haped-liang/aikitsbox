@@ -1,0 +1,7 @@
+.container{padding:24rpx;background:#FFF9F0;min-height:100vh}
+.hero{text-align:center;font-size:36rpx;font-weight:700;color:#E65100;padding:30rpx 0}
+.card{background:#fff;border-radius:16rpx;padding:24rpx;margin-bottom:20rpx}
+.sec-title{font-size:28rpx;font-weight:600;color:#333;margin-bottom:16rpx}
+.pet-row{display:flex;gap:12rpx}.pet-chip{padding:14rpx 28rpx;background:#FFF3E0;border-radius:30rpx;font-size:28rpx}.pet-chip.active{background:#FF9800;color:#fff}
+.vac-item{display:flex;align-items:center;padding:16rpx 0;border-bottom:1rpx solid #F5F5F5;gap:16rpx}.vac-item.done{opacity:.5}
+.vac-check{font-size:36rpx;flex-shrink:0}.vac-name{font-size:28rpx;color:#333}.vac-age{font-size:22rpx;color:#999;margin-top:4rpx}
