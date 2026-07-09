@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { domains: ['aikitsbox.cn'] },
+  output: 'export',
+  images: { unoptimized: true },
   async headers() {
     return [{ source: '/api/:path*', headers: [
       { key: 'Access-Control-Allow-Origin', value: '*' },

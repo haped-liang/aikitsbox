@@ -4,15 +4,17 @@ import Link from 'next/link';
 
 const TOOLS = [
   { id:'photo-restore', icon:'📸', name:'老照片修复', desc:'AI修复模糊/破损/黑白老照片', badge:'最热', href:'/tools/photo-restore', color:'from-amber-500 to-orange-600' },
-  { id:'ai-write', icon:'✍️', name:'AI写作', desc:'一键生成文案/邮件/报告', badge:'', href:'/tools/photo-restore', color:'from-blue-500 to-cyan-600' },
-  { id:'image-enhance', icon:'🎨', name:'图片增强', desc:'提升分辨率/去噪/去背景', badge:'', href:'/tools/photo-restore', color:'from-purple-500 to-pink-600' },
-  { id:'resume', icon:'💼', name:'简历优化', desc:'AI分析+改写+评分', badge:'', href:'/tools/photo-restore', color:'from-green-500 to-emerald-600' },
-  { id:'pet-health', icon:'🐾', name:'宠物医生', desc:'症状自查+护理建议', badge:'', href:'/tools/photo-restore', color:'from-red-500 to-rose-600' },
-  { id:'baby-name', icon:'🏷️', name:'AI起名', desc:'宝宝/公司/品牌智能起名', badge:'', href:'/tools/photo-restore', color:'from-yellow-500 to-amber-600' },
-  { id:'recipe', icon:'🍳', name:'食谱生成', desc:'拍食材→出菜谱', badge:'', href:'/tools/photo-restore', color:'from-teal-500 to-green-600' },
-  { id:'contract', icon:'🔍', name:'合同审查', desc:'AI审合同+标风险条款', badge:'Pro', href:'/tools/photo-restore', color:'from-indigo-500 to-blue-600' },
-  { id:'bookkeeping', icon:'💰', name:'AI记账', desc:'语音记账+自动分类', badge:'', href:'/tools/photo-restore', color:'from-pink-500 to-rose-600' },
-  { id:'data-viz', icon:'📊', name:'数据可视化', desc:'上传数据→生成图表', badge:'Pro', href:'/tools/photo-restore', color:'from-violet-500 to-purple-600' },
+  { id:'ai-write', icon:'✍️', name:'AI写作助手', desc:'小红书/抖音/公众号多平台文案生成', badge:'', href:'/tools/ai-write', color:'from-blue-500 to-cyan-600' },
+  { id:'image-enhance', icon:'🎨', name:'图片增强', desc:'提升分辨率/去噪/去背景', badge:'', href:'/tools/image-enhance', color:'from-purple-500 to-pink-600' },
+  { id:'bg-remove', icon:'✂️', name:'AI抠图', desc:'5秒智能抠图/发丝级精度', badge:'新上', href:'/tools/bg-remove', color:'from-rose-500 to-pink-600' },
+  { id:'resume', icon:'💼', name:'简历优化', desc:'AI分析+STAR法则改写+评分', badge:'', href:'/tools/resume', color:'from-green-500 to-emerald-600' },
+  { id:'pet-health', icon:'🐾', name:'宠物医生', desc:'症状自查+病因分析+护理建议', badge:'', href:'/tools/pet-health', color:'from-red-500 to-rose-600' },
+  { id:'baby-name', icon:'🏷️', name:'AI起名', desc:'宝宝/公司/品牌智能起名', badge:'', href:'/tools/baby-name', color:'from-yellow-500 to-amber-600' },
+  { id:'recipe', icon:'🍳', name:'食谱生成', desc:'输入食材→AI推荐菜谱+做法', badge:'', href:'/tools/recipe', color:'from-teal-500 to-green-600' },
+  { id:'contract', icon:'🔍', name:'合同审查', desc:'AI审合同+标风险条款+改建议', badge:'Pro', href:'/tools/contract', color:'from-indigo-500 to-blue-600' },
+  { id:'ppt', icon:'📊', name:'PPT生成', desc:'输入主题→AI生成完整大纲', badge:'', href:'/tools/ppt', color:'from-violet-500 to-purple-600' },
+  { id:'translate', icon:'🌐', name:'AI翻译', desc:'多语种互译/专业术语/上下文理解', badge:'', href:'/tools/translate', color:'from-sky-500 to-blue-600' },
+  { id:'voice-notes', icon:'🎙️', name:'语音转文字', desc:'录音/视频→文字/中英文混合识别', badge:'', href:'/tools/voice-notes', color:'from-slate-500 to-gray-600' },
 ];
 
 export default function Home() {
@@ -26,7 +28,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 py-24 text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-sm mb-8 backdrop-blur">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            10个AI工具 · 全部在线 · 免费使用
+            12个AI工具 · 全部在线 · 免费使用
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
             AI<span className="text-primary">工具箱</span>
@@ -35,7 +37,7 @@ export default function Home() {
             一个网站，搞定所有AI需求
           </p>
           <p className="text-gray-400 mb-10 max-w-lg mx-auto">
-            老照片修复 · AI写作 · 图片增强 · 简历优化 · 宠物医生 · AI起名 · 食谱生成 · 合同审查 · AI记账 · 数据分析
+            老照片修复 · AI写作 · 图片增强 · AI抠图 · 简历优化 · 宠物医生 · AI起名 · 食谱生成 · 合同审查 · PPT生成 · AI翻译 · 语音转文字
           </p>
           <div className="flex gap-4 justify-center">
             <a href="#tools" className="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-full font-semibold text-lg transition shadow-lg shadow-primary/25">
