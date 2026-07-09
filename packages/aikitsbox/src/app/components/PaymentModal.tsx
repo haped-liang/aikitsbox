@@ -61,6 +61,15 @@ export default function PaymentModal({ open, onClose, amount, productName, onPai
           </button>
         </div>
 
+        {/* Member promotion */}
+        <div className="mx-6 mb-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-100 rounded-xl p-3 flex items-center justify-between">
+          <div className="text-xs">
+            <span className="font-semibold text-indigo-700">💎 会员更省</span>
+            <span className="text-indigo-500 ml-1">按 Token 计费，仅 1.3x 成本</span>
+          </div>
+          <a href="/member" className="text-xs font-semibold text-indigo-500 hover:text-indigo-700 whitespace-nowrap">开通会员 →</a>
+        </div>
+
         {/* Payment method tabs */}
         <div className="flex border-b border-slate-100">
           <button

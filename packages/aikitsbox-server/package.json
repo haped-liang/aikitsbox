@@ -1,0 +1,18 @@
+{
+  "name": "aikitsbox-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI工具箱后端服务 — 会员管理 + AI代理 + Token计费",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
