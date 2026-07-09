@@ -50,7 +50,7 @@ export default function PricingPage() {
             <span className="text-slate-400 ml-1">/ 永久</span>
           </div>
           <ul className="space-y-3 mb-8 flex-1">
-            {['每天3次免费使用', '演示模式预览', '带水印输出', '12个工具可用'].map((f) => (
+            {['每天2次免费使用', '演示模式预览', '带水印输出', '12个工具可用'].map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
                 <Check className="w-4 h-4 text-slate-400 flex-shrink-0" /> {f}
               </li>
@@ -78,7 +78,7 @@ export default function PricingPage() {
             <span className="text-5xl font-extrabold text-slate-900">¥{PLANS.single.amount}</span>
           </div>
           <ul className="space-y-3 mb-8 flex-1">
-            {['无限次使用全部工具', '高清无水印输出', '去除演示水印', '优先处理速度'].map((f) => (
+            {['5次AI工具使用', '高清无水印输出', '去除演示水印', '12个工具全可用'].map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm text-slate-700">
                 <Check className="w-4 h-4 text-amber-500 flex-shrink-0" /> {f}
               </li>
@@ -103,7 +103,7 @@ export default function PricingPage() {
             <span className="text-5xl font-extrabold text-slate-900">¥{PLANS.monthly.amount}</span>
           </div>
           <ul className="space-y-3 mb-8 flex-1">
-            {['咖啡版全部功能', '专属致谢名单', '新功能抢先体验', '优先技术支持'].map((f) => (
+            {['10次AI工具使用', '咖啡版全部功能', '专属致谢名单', '优先技术支持'].map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
                 <Check className="w-4 h-4 text-pink-500 flex-shrink-0" /> {f}
               </li>
