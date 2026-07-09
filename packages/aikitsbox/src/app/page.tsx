@@ -1,115 +1,198 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { Search, Sparkles, Zap, Shield, ArrowRight, TrendingUp, Wand2, ChevronRight } from 'lucide-react';
 
 const TOOLS = [
-  { id:'photo-restore', icon:'📸', name:'老照片修复', desc:'AI修复模糊/破损/黑白老照片', badge:'最热', href:'/tools/photo-restore', color:'from-amber-500 to-orange-600' },
-  { id:'ai-write', icon:'✍️', name:'AI写作助手', desc:'小红书/抖音/公众号多平台文案生成', badge:'', href:'/tools/ai-write', color:'from-blue-500 to-cyan-600' },
-  { id:'image-enhance', icon:'🎨', name:'图片增强', desc:'提升分辨率/去噪/去背景', badge:'', href:'/tools/image-enhance', color:'from-purple-500 to-pink-600' },
-  { id:'bg-remove', icon:'✂️', name:'AI抠图', desc:'5秒智能抠图/发丝级精度', badge:'新上', href:'/tools/bg-remove', color:'from-rose-500 to-pink-600' },
-  { id:'resume', icon:'💼', name:'简历优化', desc:'AI分析+STAR法则改写+评分', badge:'', href:'/tools/resume', color:'from-green-500 to-emerald-600' },
-  { id:'pet-health', icon:'🐾', name:'宠物医生', desc:'症状自查+病因分析+护理建议', badge:'', href:'/tools/pet-health', color:'from-red-500 to-rose-600' },
-  { id:'baby-name', icon:'🏷️', name:'AI起名', desc:'宝宝/公司/品牌智能起名', badge:'', href:'/tools/baby-name', color:'from-yellow-500 to-amber-600' },
-  { id:'recipe', icon:'🍳', name:'食谱生成', desc:'输入食材→AI推荐菜谱+做法', badge:'', href:'/tools/recipe', color:'from-teal-500 to-green-600' },
-  { id:'contract', icon:'🔍', name:'合同审查', desc:'AI审合同+标风险条款+改建议', badge:'Pro', href:'/tools/contract', color:'from-indigo-500 to-blue-600' },
-  { id:'ppt', icon:'📊', name:'PPT生成', desc:'输入主题→AI生成完整大纲', badge:'', href:'/tools/ppt', color:'from-violet-500 to-purple-600' },
-  { id:'translate', icon:'🌐', name:'AI翻译', desc:'多语种互译/专业术语/上下文理解', badge:'', href:'/tools/translate', color:'from-sky-500 to-blue-600' },
-  { id:'voice-notes', icon:'🎙️', name:'语音转文字', desc:'录音/视频→文字/中英文混合识别', badge:'', href:'/tools/voice-notes', color:'from-slate-500 to-gray-600' },
+  { id:'photo-restore', name:'老照片修复', desc:'AI修复模糊、破损、黑白老照片，一键还原高清', icon:'📸', cat:'AI图像', badge:'🔥热门', href:'/tools/photo-restore/', color:'from-rose-500 to-pink-600', bg:'bg-rose-50', text:'text-rose-600', glow:'shadow-rose-500/25' },
+  { id:'ai-write', name:'AI写作助手', desc:'小红书/抖音/公众号/微博/知乎多平台文案', icon:'✍️', cat:'AI写作', badge:'', href:'/tools/ai-write/', color:'from-emerald-500 to-teal-600', bg:'bg-emerald-50', text:'text-emerald-600', glow:'shadow-emerald-500/25' },
+  { id:'bg-remove', name:'AI智能抠图', desc:'5秒发丝级抠图，支持批量处理', icon:'✂️', cat:'AI图像', badge:'✨新上', href:'/tools/bg-remove/', color:'from-violet-500 to-purple-600', bg:'bg-violet-50', text:'text-violet-600', glow:'shadow-violet-500/25' },
+  { id:'image-enhance', name:'图片增强', desc:'超分辨率、智能降噪、色彩增强', icon:'🎨', cat:'AI图像', badge:'', href:'/tools/image-enhance/', color:'from-cyan-500 to-blue-600', bg:'bg-cyan-50', text:'text-cyan-600', glow:'shadow-cyan-500/25' },
+  { id:'baby-name', name:'AI起名大师', desc:'宝宝起名·公司起名·品牌命名，融合五行诗词', icon:'👶', cat:'AI生活', badge:'', href:'/tools/baby-name/', color:'from-amber-500 to-orange-600', bg:'bg-amber-50', text:'text-amber-600', glow:'shadow-amber-500/25' },
+  { id:'translate', name:'AI智能翻译', desc:'12语种互译，专业术语精准翻译', icon:'🌐', cat:'AI写作', badge:'', href:'/tools/translate/', color:'from-sky-500 to-indigo-600', bg:'bg-sky-50', text:'text-sky-600', glow:'shadow-sky-500/25' },
+  { id:'pet-health', name:'AI宠物医生', desc:'症状自查·AI分析病因·护理建议', icon:'🐾', cat:'AI生活', badge:'', href:'/tools/pet-health/', color:'from-red-500 to-rose-600', bg:'bg-red-50', text:'text-red-600', glow:'shadow-red-500/25' },
+  { id:'resume', name:'AI简历优化', desc:'STAR法则重写·量化成果·提升邀约率', icon:'📄', cat:'AI办公', badge:'', href:'/tools/resume/', color:'from-blue-500 to-indigo-600', bg:'bg-blue-50', text:'text-blue-600', glow:'shadow-blue-500/25' },
+  { id:'recipe', name:'AI食谱生成', desc:'输入食材→AI推荐菜谱+完整做法', icon:'🍳', cat:'AI生活', badge:'', href:'/tools/recipe/', color:'from-orange-500 to-red-600', bg:'bg-orange-50', text:'text-orange-600', glow:'shadow-orange-500/25' },
+  { id:'contract', name:'AI合同审查', desc:'识别风险条款·法律依据·修改建议', icon:'⚖️', cat:'AI办公', badge:'💎Pro', href:'/tools/contract/', color:'from-indigo-500 to-purple-600', bg:'bg-indigo-50', text:'text-indigo-600', glow:'shadow-indigo-500/25' },
+  { id:'ppt', name:'AI PPT生成', desc:'输入主题→完整PPT大纲+内容框架', icon:'📊', cat:'AI办公', badge:'', href:'/tools/ppt/', color:'from-purple-500 to-pink-600', bg:'bg-purple-50', text:'text-purple-600', glow:'shadow-purple-500/25' },
+  { id:'voice-notes', name:'语音转文字', desc:'录音/视频→精准文字·中英混合识别', icon:'🎙️', cat:'AI办公', badge:'', href:'/tools/voice-notes/', color:'from-slate-500 to-gray-600', bg:'bg-slate-50', text:'text-slate-600', glow:'shadow-slate-500/25' },
 ];
 
+const CATS = ['全部', 'AI图像', 'AI写作', 'AI办公', 'AI生活'];
+const HOT_TAGS = ['老照片修复', 'AI写作', '抠图', '简历', 'PPT', '宠物', '起名', '翻译'];
+
 export default function Home() {
-  const [email, setEmail] = useState('');
+  const [search, setSearch] = useState('');
+  const [cat, setCat] = useState('全部');
+
+  const filtered = TOOLS.filter(t => {
+    const m = !search || t.name.includes(search) || t.desc.includes(search) || t.cat.includes(search);
+    const c = cat === '全部' || t.cat === cat;
+    return m && c;
+  });
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
-        <div className="max-w-4xl mx-auto px-4 py-24 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-white/10 rounded-full px-4 py-1.5 text-sm mb-8 backdrop-blur">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            12个AI工具 · 全部在线 · 免费使用
+    <div className="min-h-screen bg-[#0a0a1a]">
+      {/* ===== HERO ===== */}
+      <section className="relative overflow-hidden">
+        {/* BG effects */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f0f2e] via-[#0a0a1a] to-[#0a0a1a]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(99,102,241,0.15),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_80%_80%,rgba(236,72,153,0.08),transparent)]" />
+        {/* Grid overlay */}
+        <div className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px)', backgroundSize: '60px 60px' }} />
+
+        <div className="relative max-w-5xl mx-auto px-4 pt-28 pb-20 text-center z-10">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-indigo-300 mb-8 backdrop-blur">
+            <Sparkles className="w-3.5 h-3.5" />
+            AI驱动 · 12款精选工具 · 全部免费在线
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-            AI<span className="text-primary">工具箱</span>
+
+          {/* Title */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4 leading-tight">
+            发现最强
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"> AI工具</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto">
-            一个网站，搞定所有AI需求
+          <p className="text-slate-400 text-base sm:text-lg mb-10 max-w-2xl mx-auto">
+            覆盖图像、写作、办公、生活四大场景，一键即用，无需下载
           </p>
-          <p className="text-gray-400 mb-10 max-w-lg mx-auto">
-            老照片修复 · AI写作 · 图片增强 · AI抠图 · 简历优化 · 宠物医生 · AI起名 · 食谱生成 · 合同审查 · PPT生成 · AI翻译 · 语音转文字
-          </p>
-          <div className="flex gap-4 justify-center">
-            <a href="#tools" className="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-full font-semibold text-lg transition shadow-lg shadow-primary/25">
-              开始使用 →
-            </a>
-            <a href="/pricing" className="bg-white/10 hover:bg-white/20 px-8 py-3.5 rounded-full font-semibold text-lg transition backdrop-blur">
-              查看价格
-            </a>
+
+          {/* Search */}
+          <div className="max-w-xl mx-auto mb-6">
+            <div className="flex items-center bg-white/[0.06] border border-white/10 rounded-2xl overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500/40 focus-within:border-indigo-500/30 transition-all backdrop-blur">
+              <Search className="w-5 h-5 text-slate-400 ml-4 flex-shrink-0" />
+              <input
+                value={search} onChange={e => setSearch(e.target.value)}
+                placeholder="搜索AI工具：老照片修复、AI写作、抠图..."
+                className="w-full px-3 py-4 text-sm outline-none bg-transparent text-white placeholder-slate-500"
+              />
+              {search && <button onClick={() => setSearch('')} className="px-4 text-slate-400 hover:text-white">✕</button>}
+            </div>
+            {/* Hot tags */}
+            <div className="flex items-center justify-center flex-wrap gap-2 mt-3">
+              {HOT_TAGS.map(t => (
+                <button key={t} onClick={() => setSearch(t)}
+                  className="px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/5 text-slate-400 hover:bg-white/10 hover:text-white hover:border-white/10 text-xs transition">
+                  {t}
+                </button>
+              ))}
+            </div>
           </div>
-          <p className="mt-6 text-sm text-gray-500">每天免费3次 · 无需注册 · 无需下载</p>
-        </div>
-      </section>
 
-      {/* Tools Grid */}
-      <section id="tools" className="max-w-6xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center mb-2">🛠️ 全部AI工具</h2>
-        <p className="text-gray-500 text-center mb-12">点击任意工具，立即开始使用</p>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {TOOLS.map(tool => (
-            <Link
-              key={tool.id}
-              href={tool.href}
-              className="group relative bg-white rounded-2xl p-5 border border-gray-100 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 hover:-translate-y-1"
-            >
-              {tool.badge && (
-                <span className={`absolute top-3 right-3 text-xs font-bold px-2 py-0.5 rounded-full ${
-                  tool.badge === '最热' ? 'bg-red-50 text-red-500' : 'bg-purple-50 text-purple-500'
-                }`}>{tool.badge}</span>
-              )}
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform`}>
-                {tool.icon}
+          {/* Stats */}
+          <div className="flex items-center justify-center gap-8 text-sm">
+            {[{ icon:Zap, v:'12+', l:'精品工具' }, { icon:Shield, v:'免费', l:'无需注册' }, { icon:TrendingUp, v:'每日', l:'持续更新' }].map((s,i) => (
+              <div key={i} className="flex items-center gap-2">
+                <s.icon className="w-4 h-4 text-indigo-400" />
+                <span className="text-white font-bold">{s.v}</span>
+                <span className="text-slate-500">{s.l}</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">{tool.name}</h3>
-              <p className="text-xs text-gray-400 leading-relaxed">{tool.desc}</p>
-            </Link>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section id="pricing" className="max-w-4xl mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold text-center mb-2">💎 简单定价</h2>
-        <p className="text-gray-500 text-center mb-12">免费开始，随时升级</p>
-        <div className="grid md:grid-cols-3 gap-6">
+      {/* ===== CATEGORY BAR ===== */}
+      <section className="sticky top-0 z-40 bg-[#0a0a1a]/80 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-2 overflow-x-auto">
+          {CATS.map(c => (
+            <button key={c} onClick={() => { setCat(c); setSearch(''); }}
+              className={`px-4 py-1.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
+                c === cat ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/30' : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
+              }`}>
+              {c}
+            </button>
+          ))}
+          <span className="text-xs text-slate-600 ml-auto whitespace-nowrap">{filtered.length} 个工具</span>
+        </div>
+      </section>
+
+      {/* ===== TOOLS GRID ===== */}
+      <section className="max-w-5xl mx-auto px-4 py-10">
+        {filtered.length === 0 ? (
+          <div className="text-center py-20 text-slate-500">
+            <Search className="w-12 h-12 mx-auto mb-4 text-slate-600" />
+            <p className="text-lg">没有匹配的工具</p>
+            <button onClick={() => { setSearch(''); setCat('全部'); }} className="mt-4 text-indigo-400 hover:text-indigo-300">查看全部 →</button>
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {filtered.map((t) => (
+              <Link key={t.id} href={t.href}
+                className="group relative bg-white/[0.03] border border-white/5 rounded-2xl p-5 hover:border-white/10 hover:bg-white/[0.06] transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/5 backdrop-blur">
+                {/* Top glow stripe */}
+                <div className={`absolute top-0 left-4 right-4 h-0.5 rounded-full bg-gradient-to-r ${t.color} opacity-0 group-hover:opacity-100 transition-opacity`} />
+                {/* Badge */}
+                {t.badge && (
+                  <span className={`absolute top-4 right-4 text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    t.badge.includes('热门') ? 'bg-red-500/10 text-red-400 border border-red-500/20' :
+                    t.badge.includes('新上') ? 'bg-green-500/10 text-green-400 border border-green-500/20' :
+                    'bg-purple-500/10 text-purple-400 border border-purple-500/20'
+                  }`}>{t.badge}</span>
+                )}
+                {/* Icon */}
+                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${t.color} flex items-center justify-center text-xl mb-4 group-hover:scale-110 transition-transform shadow-lg ${t.glow}`}>
+                  {t.icon}
+                </div>
+                {/* Info */}
+                <h3 className="font-semibold text-white text-sm mb-1.5">{t.name}</h3>
+                <p className="text-xs text-slate-500 leading-relaxed line-clamp-2 mb-3">{t.desc}</p>
+                {/* Category tag + arrow */}
+                <div className="flex items-center justify-between">
+                  <span className={`text-[10px] px-2 py-0.5 rounded-md ${t.bg} ${t.text} bg-opacity-20`}>{t.cat}</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-600 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-all" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
+      <section className="max-w-5xl mx-auto px-4 py-16 border-t border-white/5">
+        <div className="text-center mb-10">
+          <p className="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-2">How It Works</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">三步开始使用</h2>
+        </div>
+        <div className="grid sm:grid-cols-3 gap-6">
           {[
-            { name:'免费版', price:'¥0', features:['每天3次免费使用','基础质量输出','带水印','所有工具可用'], cta:'开始使用', primary:false },
-            { name:'Pro版', price:'¥29/月', features:['无限使用','高清无水印','优先处理速度','新功能抢先体验','邮件支持'], cta:'升级Pro', primary:true },
-            { name:'企业版', price:'¥199/月', features:['API接入','批量处理','专属客服','自定义品牌','SLA保障'], cta:'联系客服', primary:false },
-          ].map((p, i) => (
-            <div key={i} className={`rounded-2xl p-8 border-2 ${p.primary ? 'border-primary bg-primary/5 relative' : 'border-gray-100 bg-white'}`}>
-              {p.primary && <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">最受欢迎</span>}
-              <h3 className="text-xl font-bold mb-2">{p.name}</h3>
-              <div className="mb-6"><span className="text-4xl font-bold">{p.price}</span>{p.price !== '¥0' && <span className="text-gray-400">/月</span>}</div>
-              <ul className="space-y-3 mb-8">
-                {p.features.map((f, j) => (
-                  <li key={j} className="flex items-center gap-2 text-sm text-gray-600"><span className="text-green-500">✓</span> {f}</li>
-                ))}
-              </ul>
-              <button className={`w-full py-3 rounded-full font-semibold text-sm transition ${p.primary ? 'bg-primary text-white hover:opacity-90' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}>{p.cta}</button>
+            { step:'01', title:'搜索工具', desc:'输入需求关键词或按分类浏览，快速找到需要的AI工具' },
+            { step:'02', title:'一键使用', desc:'点击工具卡片直接进入使用页面，无需下载安装注册' },
+            { step:'03', title:'高效完成', desc:'AI帮你快速完成任务，下载高清成果或复制文案' },
+          ].map((s, i) => (
+            <div key={i} className="text-center p-6 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors">
+              <div className="text-3xl font-extrabold text-white/10 mb-3">{s.step}</div>
+              <h3 className="font-bold text-white mb-2">{s.title}</h3>
+              <p className="text-sm text-slate-500">{s.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-2xl mx-auto px-4 py-20 text-center">
-        <h2 className="text-3xl font-bold mb-4">准备好了吗？</h2>
-        <p className="text-gray-500 mb-8">不需要下载，不需要注册，打开浏览器就开始</p>
-        <a href="#tools" className="inline-block bg-primary text-white px-10 py-4 rounded-full font-bold text-lg hover:opacity-90 transition shadow-lg shadow-primary/25">
-          🚀 免费开始使用
-        </a>
+      {/* ===== CTA ===== */}
+      <section className="max-w-5xl mx-auto px-4 pb-20">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600/20 via-purple-600/20 to-pink-600/20 border border-white/10 p-10 sm:p-14 text-center">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-[60px]" />
+          <div className="relative z-10">
+            <Wand2 className="w-10 h-10 mx-auto mb-5 text-indigo-400" />
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">准备好体验AI了吗？</h2>
+            <p className="text-slate-400 mb-8 max-w-md mx-auto">12款精选AI工具，全部免费在线使用。无需注册，打开即用。</p>
+            <div className="flex gap-3 justify-center">
+              <a href="#top" onClick={() => window.scrollTo({top:0,behavior:'smooth'})}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-500 text-white font-semibold hover:bg-indigo-600 transition shadow-lg shadow-indigo-500/25">
+                开始使用 <ChevronRight className="w-4 h-4" />
+              </a>
+              <Link href="/pricing/"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition">
+                查看定价
+              </Link>
+            </div>
+          </div>
+        </div>
       </section>
-    </>
+    </div>
   );
 }
