@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Sparkles, Copy, ArrowRightLeft, RefreshCw } from 'lucide-react';
 import { callAI } from '@/lib/ai';
+import { getToolPrice } from '@/lib/pricing';
+import PaymentModal from '@/app/components/PaymentModal';
 
 const LANGUAGES: Record<string, string> = {
   '英文': 'English', '日文': '日本語', '韩文': '한국어',
@@ -18,6 +20,10 @@ export default function TranslatePage() {
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  const [showPayment, setShowPayment] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
+  const price = getToolPrice('translate');
 
   const handleTranslate = async () => {
     if (!input.trim()) return;
@@ -96,12 +102,21 @@ export default function TranslatePage() {
                 </button>
               </div>
             </div>
-            <div className="p-5 text-sm leading-relaxed whitespace-pre-wrap text-slate-700">{result}</div>
+            <div className="p-5 text-sm leading-relaxed whitespace-pre-wrap text-slate-700">{result}{!unlocked && result && <span className="text-amber-500 text-xs block mt-3 border-t border-amber-100 pt-3">🔒 以上为演示模式预览 · 付费解锁完整无水印内容</span>}</div>
+            {!unlocked && (
+              <div className="px-5 pb-4">
+                <button onClick={() => setShowPayment(true)} className="w-full py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl text-sm font-bold hover:opacity-90 transition">
+                  🔓 解锁完整版 (¥{price.amount})
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
 
-      <p className="text-center text-sm text-slate-400 mt-6">免费翻译预览 · 专业版无限制翻译 · Pro版全部工具可用</p>
+      <p className="text-center text-sm text-slate-400 mt-6">免费演示预览 · 无水印完整版 ¥{price.amount}/{price.label.split('/')[1]?.trim() || '次'} · <button onClick={() => setShowPayment(true)} className="text-amber-500 hover:text-amber-600 underline">立即解锁</button></p>
+
+      <PaymentModal open={showPayment} onClose={() => setShowPayment(false)} amount={price.amount} productName={price.label} onPaid={() => setUnlocked(true)} />
     </div>
   );
 }

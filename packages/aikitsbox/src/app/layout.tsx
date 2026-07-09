@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </a>
             <nav className="flex gap-4 text-sm text-gray-600">
               <a href="/#tools" className="hover:text-primary">工具</a>
-              <a href="/#pricing" className="hover:text-primary">价格</a>
+              <a href="/pricing" className="hover:text-primary">价格</a>
               <a href="/about" className="hover:text-primary">关于</a>
               <a href="/#tools" className="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-medium hover:opacity-90 transition">免费使用</a>
             </nav>

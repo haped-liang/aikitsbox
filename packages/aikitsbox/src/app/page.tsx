@@ -43,7 +43,7 @@ export default function Home() {
             <a href="#tools" className="bg-primary hover:bg-primary/90 text-white px-8 py-3.5 rounded-full font-semibold text-lg transition shadow-lg shadow-primary/25">
               开始使用 →
             </a>
-            <a href="#pricing" className="bg-white/10 hover:bg-white/20 px-8 py-3.5 rounded-full font-semibold text-lg transition backdrop-blur">
+            <a href="/pricing" className="bg-white/10 hover:bg-white/20 px-8 py-3.5 rounded-full font-semibold text-lg transition backdrop-blur">
               查看价格
             </a>
           </div>

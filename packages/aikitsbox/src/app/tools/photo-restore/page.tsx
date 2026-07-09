@@ -1,5 +1,7 @@
 'use client';
 import { useState, useRef, useCallback } from 'react';
+import { getToolPrice } from '@/lib/pricing';
+import PaymentModal from '@/app/components/PaymentModal';
 
 type Step = 'upload' | 'processing' | 'done';
 
@@ -11,7 +13,9 @@ export default function PhotoRestorePage() {
   const [sliderPos, setSliderPos] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [tipIdx, setTipIdx] = useState(0);
-  const [showPricing, setShowPricing] = useState(false);
+  const [showPayment, setShowPayment] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
+  const price = getToolPrice('photo-restore');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const tips = [
@@ -50,7 +54,7 @@ export default function PhotoRestorePage() {
   };
 
   const handleDownload = () => {
-    setShowPricing(true);
+    setShowPayment(true);
   };
 
   return (
@@ -139,39 +143,15 @@ export default function PhotoRestorePage() {
             </button>
             <button onClick={handleDownload}
               className="flex-1 py-3 rounded-full font-semibold bg-primary text-white hover:opacity-90 transition shadow-lg shadow-primary/25">
-              💾 下载高清版
+              💾 下载高清版 (¥{price.amount})
             </button>
           </div>
-          <p className="text-center text-sm text-gray-400 mt-3">免费预览带水印 · 高清无水印 ¥9.9/张</p>
+          <p className="text-center text-sm text-gray-400 mt-3">免费预览带水印 · 高清无水印 ¥{price.amount}/张 · <button onClick={() => setShowPayment(true)} className="text-amber-500 hover:text-amber-600 underline">立即解锁</button></p>
         </>
       )}
 
-      {/* Pricing Modal */}
-      {showPricing && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setShowPricing(false)}>
-          <div className="bg-white rounded-2xl p-8 max-w-sm w-full animate-fade-in" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-xl font-bold mb-4">解锁高清下载</h3>
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-3 p-4 border-2 border-primary rounded-xl bg-orange-50">
-                <span className="text-2xl">📸</span>
-                <div>
-                  <p className="font-bold text-lg">¥9.9 <span className="text-sm font-normal text-gray-400">/张</span></p>
-                  <p className="text-xs text-gray-500">单张高清无水印下载</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 p-4 border rounded-xl">
-                <span className="text-2xl">🎯</span>
-                <div>
-                  <p className="font-bold text-lg">¥29 <span className="text-sm font-normal text-gray-400">/月</span></p>
-                  <p className="text-xs text-gray-500">Pro版 · 无限下载 · 所有工具</p>
-                </div>
-              </div>
-            </div>
-            <button className="w-full py-3 bg-primary text-white rounded-full font-bold hover:opacity-90 transition mb-2">立即购买</button>
-            <button onClick={() => setShowPricing(false)} className="w-full py-3 text-gray-400 text-sm">暂不需要</button>
-          </div>
-        </div>
-      )}
+      {/* Payment Modal */}
+      <PaymentModal open={showPayment} onClose={() => setShowPayment(false)} amount={price.amount} productName={price.label} onPaid={() => setUnlocked(true)} />
 
       {/* Global mouse/touch tracker for slider */}
       {isDragging && (

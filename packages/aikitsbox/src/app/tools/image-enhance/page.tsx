@@ -2,6 +2,8 @@
 import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Download, ImagePlus, Zap } from 'lucide-react';
+import { getToolPrice } from '@/lib/pricing';
+import PaymentModal from '@/app/components/PaymentModal';
 
 const ENHANCE_MODES = ['超分辨率', '智能降噪', '色彩增强', '去雾', '综合增强'];
 
@@ -12,6 +14,9 @@ export default function ImageEnhancePage() {
   const [progress, setProgress] = useState(0);
   const [enhanced, setEnhanced] = useState<string | null>(null);
   const [sliderPos, setSliderPos] = useState(50);
+  const [showPayment, setShowPayment] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
+  const price = getToolPrice('image-enhance');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFile = (file: File) => {
@@ -117,14 +122,16 @@ export default function ImageEnhancePage() {
               className="flex-1 py-3 rounded-xl border-2 border-slate-200 hover:bg-slate-50 transition font-semibold text-slate-600">
               增强另一张
             </button>
-            <button className="flex-1 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold hover:opacity-90 transition flex items-center justify-center gap-2">
-              <Download className="w-5 h-5" /> 下载高清版
+            <button onClick={() => setShowPayment(true)} className="flex-1 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-600 text-white font-bold hover:opacity-90 transition flex items-center justify-center gap-2">
+              <Download className="w-5 h-5" /> 下载高清版 (¥{price.amount})
             </button>
           </div>
         </>
       )}
 
-      <p className="text-center text-sm text-slate-400 mt-6">免费预览带水印 · 高清无水印下载 ¥9.9/张 · Pro版无限使用</p>
+      <p className="text-center text-sm text-slate-400 mt-6">免费预览带水印 · 高清无水印 ¥{price.amount}/张 · <button onClick={() => setShowPayment(true)} className="text-amber-500 hover:text-amber-600 underline">立即解锁</button></p>
+
+      <PaymentModal open={showPayment} onClose={() => setShowPayment(false)} amount={price.amount} productName={price.label} onPaid={() => setUnlocked(true)} />
     </div>
   );
 }
