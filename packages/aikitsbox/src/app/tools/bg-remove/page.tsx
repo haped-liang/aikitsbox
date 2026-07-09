@@ -117,7 +117,7 @@ export default function BGRemovePage() {
         </>
       )}
 
-      <p className="text-center text-sm text-slate-400 mt-6">免费预览 · 透明PNG ¥{price.amount}/张 · <button onClick={() => setShowPayment(true)} className="text-amber-500 hover:text-amber-600 underline">立即解锁</button></p>
+      <p className="text-center text-sm text-slate-400 mt-6">工具免费 · 喜欢的话欢迎打赏支持 ¥{price.amount}/张 · <button onClick={() => setShowPayment(true)} className="text-amber-500 hover:text-amber-600 underline">打赏支持</button></p>
 
       <PaymentModal open={showPayment} onClose={() => setShowPayment(false)} amount={price.amount} productName={price.label} onPaid={() => setUnlocked(true)} />
     </div>

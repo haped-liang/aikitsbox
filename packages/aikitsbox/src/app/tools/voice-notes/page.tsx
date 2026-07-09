@@ -101,7 +101,7 @@ export default function VoiceNotesPage() {
             {!unlocked && (
               <div className="px-5 pb-4">
                 <button onClick={() => setShowPayment(true)} className="w-full py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl text-sm font-bold hover:opacity-90 transition">
-                  🔓 解锁完整版 (¥{price.amount})
+                  🔓 打赏支持 (¥{price.amount})
                 </button>
               </div>
             )}
@@ -109,7 +109,7 @@ export default function VoiceNotesPage() {
         )}
       </div>
 
-      <p className="text-center text-sm text-slate-400 mt-6">免费演示预览 · 无水印完整版 ¥{price.amount}/{price.label.split('/')[1]?.trim() || '次'} · <button onClick={() => setShowPayment(true)} className="text-amber-500 hover:text-amber-600 underline">立即解锁</button></p>
+      <p className="text-center text-sm text-slate-400 mt-6">工具免费 · 喜欢的话欢迎打赏支持 ¥{price.amount}/{price.label.split('/')[1]?.trim() || '次'} · <button onClick={() => setShowPayment(true)} className="text-amber-500 hover:text-amber-600 underline">打赏支持</button></p>
 
       <PaymentModal open={showPayment} onClose={() => setShowPayment(false)} amount={price.amount} productName={price.label} onPaid={() => setUnlocked(true)} />
     </div>

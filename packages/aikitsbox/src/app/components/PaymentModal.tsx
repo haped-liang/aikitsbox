@@ -45,29 +45,28 @@ export default function PaymentModal({ open, onClose, amount, productName, onPai
           <button onClick={onClose} className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition">
             <X className="w-5 h-5" />
           </button>
-          <div className="text-3xl mb-2">🔓</div>
-          <h3 className="text-xl font-bold">解锁完整功能</h3>
-          <p className="text-white/60 text-sm mt-1">{productName}</p>
+          <div className="text-3xl mb-2">❤️</div>
+          <h3 className="text-xl font-bold">支持我们</h3>
+          <p className="text-white/60 text-sm mt-1">如果觉得好用，请我们喝杯咖啡吧 ☕</p>
         </div>
 
         {/* Price */}
         <div className="text-center py-5 border-b border-slate-100">
+          <p className="text-xs text-slate-400 mb-1">建议打赏金额</p>
           <div className="flex items-center justify-center gap-1">
             <span className="text-3xl font-extrabold text-slate-900">¥{amount}</span>
-            <span className="text-slate-400 text-sm">/{productName.includes('/') ? productName.split('/')[1]?.trim() : '次'}</span>
           </div>
-          <button onClick={handleCopyAmount} className="mt-2 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600 transition">
-            <Copy className="w-3 h-3" /> {copied ? '已复制' : '复制金额'}
-          </button>
+          <div className="flex justify-center gap-2 mt-3">
+            {[6.66, 9.99, 19.99].map(a => (
+              <button key={a} onClick={() => handleCopyAmount()} className={`px-3 py-1 rounded-lg text-xs font-medium transition ${amount === a ? 'bg-indigo-500 text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>¥{a}</button>
+            ))}
+          </div>
+          <p className="text-xs text-slate-400 mt-2">随缘打赏，金额不限 ❤️</p>
         </div>
 
-        {/* Member promotion */}
-        <div className="mx-6 mb-2 bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-100 rounded-xl p-3 flex items-center justify-between">
-          <div className="text-xs">
-            <span className="font-semibold text-indigo-700">💎 会员更省</span>
-            <span className="text-indigo-500 ml-1">按 Token 计费，仅 1.3x 成本</span>
-          </div>
-          <a href="/member" className="text-xs font-semibold text-indigo-500 hover:text-indigo-700 whitespace-nowrap">开通会员 →</a>
+        {/* Donation note */}
+        <div className="mx-6 mb-2 bg-gradient-to-r from-pink-50 to-rose-50 border border-pink-100 rounded-xl p-3 text-center">
+          <p className="text-xs text-pink-600">❤️ 工具永久免费，打赏 purely 自愿，感谢每一份支持</p>
         </div>
 
         {/* Payment method tabs */}
@@ -113,15 +112,15 @@ export default function PaymentModal({ open, onClose, amount, productName, onPai
             <p>💰 支付金额：<strong className="text-slate-900">¥{amount}</strong></p>
           </div>
 
-          {/* Pay button */}
+          {/* Donate button */}
           <button
             onClick={handlePaid}
-            className="mt-6 w-full py-3.5 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl font-bold hover:opacity-90 transition shadow-lg shadow-green-500/25 flex items-center justify-center gap-2"
+            className="mt-6 w-full py-3.5 bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-2xl font-bold hover:opacity-90 transition shadow-lg shadow-pink-500/25 flex items-center justify-center gap-2"
           >
             <Check className="w-5 h-5" />
-            {showConfirm ? '✓ 确认成功！' : '我已扫码支付完成'}
+            {showConfirm ? '❤️ 感谢支持！' : '我已扫码打赏'}
           </button>
-          <p className="text-xs text-slate-400 mt-3">支付成功后点击上方按钮即可解锁</p>
+          <p className="text-xs text-slate-400 mt-3">每一份支持都让我们做得更好 ❤️</p>
         </div>
 
         {/* Footer */}

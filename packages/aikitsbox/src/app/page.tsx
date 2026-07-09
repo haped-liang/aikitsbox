@@ -171,27 +171,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== CTA ===== */}
+      {/* ===== 支持我们 ===== */}
       <section className="max-w-5xl mx-auto px-4 pb-20">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600/20 via-purple-600/20 to-pink-600/20 border border-white/10 p-10 sm:p-14 text-center">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-[60px]" />
-          <div className="relative z-10">
-            <Wand2 className="w-10 h-10 mx-auto mb-5 text-indigo-400" />
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">准备好体验AI了吗？</h2>
-            <p className="text-slate-400 mb-8 max-w-md mx-auto">12款精选AI工具，全部免费在线使用。无需注册，打开即用。</p>
-            <div className="flex gap-3 justify-center">
-              <a href="#top" onClick={() => window.scrollTo({top:0,behavior:'smooth'})}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-500 text-white font-semibold hover:bg-indigo-600 transition shadow-lg shadow-indigo-500/25">
-                开始使用 <ChevronRight className="w-4 h-4" />
-              </a>
-              <Link href="/pricing/"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition">
-                查看定价
-              </Link>
-            </div>
-          </div>
+        <div className="text-center mb-8">
+          <p className="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-2">Support Us</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">❤️ 支持我们</h2>
+          <p className="text-slate-400 text-sm mt-2">所有工具永久免费，如果对你有帮助，欢迎打赏支持</p>
         </div>
+        <div className="grid sm:grid-cols-3 gap-4 mb-6">
+          {[
+            { icon:'☕', amount:'6.66', label:'喝杯咖啡', desc:'感谢支持，感动不已' },
+            { icon:'🍕', amount:'9.99', label:'请顿午饭', desc:'动力满满，持续更新' },
+            { icon:'🎉', amount:'19.99', label:'大力支持', desc:'你的名字将出现在致谢页' },
+          ].map((p, i) => (
+            <Link key={i} href="/pricing/"
+              className={`text-center p-6 rounded-2xl border transition-all hover:-translate-y-1 bg-white/[0.02] border-white/5 hover:border-pink-500/20 hover:bg-white/[0.05]`}>
+              <div className="text-3xl mb-3">{p.icon}</div>
+              <div className="text-2xl font-extrabold text-white mb-1">¥{p.amount}</div>
+              <div className="text-sm text-slate-400 mb-1">{p.label}</div>
+              <div className="text-xs text-slate-600">{p.desc}</div>
+            </Link>
+          ))}
+        </div>
+        <p className="text-center text-xs text-slate-600">
+          工具永久免费 · 打赏 purely 自愿 ·
+          <Link href="/pricing/" className="text-indigo-400 hover:text-indigo-300 ml-1">了解更多 →</Link>
+        </p>
       </section>
     </div>
   );

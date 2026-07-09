@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/#tools" className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition">工具</Link>
               <Link href="/pricing/" className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition">价格</Link>
               <Link href="/about/" className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition">关于</Link>
-              <Link href="/member/" className="ml-1 px-4 py-1.5 rounded-full bg-indigo-500 text-white text-sm font-semibold hover:bg-indigo-600 transition shadow-lg shadow-indigo-500/25">免费使用</Link>
+              <Link href="/pricing/" className="ml-1 px-4 py-1.5 rounded-full bg-pink-500 text-white text-sm font-semibold hover:bg-pink-600 transition shadow-lg shadow-pink-500/25">❤️ 支持我们</Link>
             </nav>
           </div>
         </header>
