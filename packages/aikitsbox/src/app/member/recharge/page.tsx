@@ -106,7 +106,7 @@ function RechargeContent() {
               </div>
 
               <div className="text-center p-6 bg-slate-50 rounded-xl mb-4">
-                <img src={payMethod === 'wechat' ? '/images/wechat-pay-qr.png' : '/images/alipay-qr.png'}
+                <img src={payMethod === 'wechat' ? '/images/wechat-pay-qr-v2.png' : '/images/alipay-qr-v2.png'}
                   alt="收款码" className="w-48 h-48 mx-auto object-contain rounded-xl"
                   onError={(e) => { (e.target as HTMLImageElement).src = payMethod === 'wechat' ? '/images/wechat-pay-qr.svg' : '/images/alipay-qr.svg'; }} />
                 <p className="text-sm text-slate-500 mt-3">请使用<strong>{payMethod === 'wechat' ? '微信' : '支付宝'}</strong>扫码支付</p>

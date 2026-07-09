@@ -96,7 +96,7 @@ export default function PaymentModal({ open, onClose, amount, productName, onPai
           <div className="inline-block p-4 bg-slate-50 rounded-2xl border border-slate-200 mb-4">
             {/* QR Image: 优先加载 PNG（真实收款码），失败则用 SVG 占位 */}
             <img
-              src={method === 'wechat' ? '/images/wechat-pay-qr.png' : '/images/alipay-qr.png'}
+              src={method === 'wechat' ? '/images/wechat-pay-qr-v2.png' : '/images/alipay-qr-v2.png'}
               alt={method === 'wechat' ? '微信收款码' : '支付宝收款码'}
               className="w-48 h-48 object-contain rounded-xl"
               onError={(e) => {
