@@ -178,11 +178,10 @@ export default function Home() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white">❤️ 支持我们</h2>
           <p className="text-slate-400 text-sm mt-2">所有工具永久免费，如果对你有帮助，欢迎打赏支持</p>
         </div>
-        <div className="grid sm:grid-cols-3 gap-4 mb-6">
+        <div className="grid sm:grid-cols-2 gap-4 mb-6 max-w-md mx-auto">
           {[
-            { icon:'☕', amount:'6.66', label:'喝杯咖啡', desc:'感谢支持，感动不已' },
-            { icon:'🍕', amount:'9.99', label:'请顿午饭', desc:'动力满满，持续更新' },
-            { icon:'🎉', amount:'19.99', label:'大力支持', desc:'你的名字将出现在致谢页' },
+            { icon:'☕', amount:'3.3', label:'一杯咖啡', desc:'感谢支持，感动不已' },
+            { icon:'🧋', amount:'6.6', label:'一杯奶茶', desc:'动力满满，持续更新' },
           ].map((p, i) => (
             <Link key={i} href="/pricing/"
               className={`text-center p-6 rounded-2xl border transition-all hover:-translate-y-1 bg-white/[0.02] border-white/5 hover:border-pink-500/20 hover:bg-white/[0.05]`}>

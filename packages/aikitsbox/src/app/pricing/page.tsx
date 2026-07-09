@@ -41,8 +41,8 @@ export default function PricingPage() {
               <Zap className="w-6 h-6 text-slate-600" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-slate-900">免费版</h3>
-              <p className="text-sm text-slate-400">适合体验试用</p>
+              <h3 className="text-xl font-bold text-slate-900">免费使用</h3>
+              <p className="text-sm text-slate-400">所有工具免费可用</p>
             </div>
           </div>
           <div className="mb-6">
@@ -62,66 +62,56 @@ export default function PricingPage() {
           </Link>
         </div>
 
-        {/* Pro */}
+        {/* 一杯咖啡 */}
         <div className="bg-gradient-to-b from-amber-50 to-white rounded-3xl border-2 border-amber-400 p-8 flex flex-col relative">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-sm font-bold px-4 py-1 rounded-full">
-            🏆 最受欢迎
+            ☕ 最受欢迎
           </div>
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center">
-              <Crown className="w-6 h-6 text-amber-500" />
-            </div>
+            <div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center text-2xl">☕</div>
             <div>
-              <h3 className="text-xl font-bold text-slate-900">Pro 版</h3>
-              <p className="text-sm text-slate-400">适合重度用户</p>
+              <h3 className="text-xl font-bold text-slate-900">一杯咖啡</h3>
+              <p className="text-sm text-slate-400">感谢支持，感动不已</p>
             </div>
           </div>
           <div className="mb-6">
-            <span className="text-5xl font-extrabold text-slate-900">¥{PLANS.monthly.amount}</span>
-            <span className="text-slate-400 ml-1">/ 月</span>
+            <span className="text-5xl font-extrabold text-slate-900">¥{PLANS.single.amount}</span>
           </div>
           <ul className="space-y-3 mb-8 flex-1">
-            {[
-              '无限次使用全部工具', '高清无水印输出', '真实AI生成（非演示）', '优先处理速度', '新功能抢先体验', '邮件技术支持',
-            ].map((f) => (
+            {['无限次使用全部工具', '高清无水印输出', '去除演示水印', '优先处理速度'].map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm text-slate-700">
                 <Check className="w-4 h-4 text-amber-500 flex-shrink-0" /> {f}
               </li>
             ))}
           </ul>
-          <button onClick={() => handleBuy(PLANS.monthly)}
+          <button onClick={() => handleBuy(PLANS.single)}
             className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold hover:opacity-90 transition shadow-lg shadow-amber-500/25">
-            立即升级 Pro (¥{PLANS.monthly.amount}/月)
+            ☕ 请杯咖啡 (¥{PLANS.single.amount})
           </button>
         </div>
 
-        {/* Enterprise */}
-        <div className="bg-white rounded-3xl border-2 border-slate-200 p-8 flex flex-col">
+        {/* 一杯奶茶 */}
+        <div className="bg-white rounded-3xl border-2 border-pink-200 p-8 flex flex-col">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-12 h-12 rounded-xl bg-indigo-100 flex items-center justify-center">
-              <Building2 className="w-6 h-6 text-indigo-500" />
-            </div>
+            <div className="w-12 h-12 rounded-xl bg-pink-100 flex items-center justify-center text-2xl">🧋</div>
             <div>
-              <h3 className="text-xl font-bold text-slate-900">企业版</h3>
-              <p className="text-sm text-slate-400">适合团队和企业</p>
+              <h3 className="text-xl font-bold text-slate-900">一杯奶茶</h3>
+              <p className="text-sm text-slate-400">大力支持，持续更新</p>
             </div>
           </div>
           <div className="mb-6">
-            <span className="text-5xl font-extrabold text-slate-900">¥{PLANS.yearly.amount}</span>
-            <span className="text-slate-400 ml-1">/ 年</span>
+            <span className="text-5xl font-extrabold text-slate-900">¥{PLANS.monthly.amount}</span>
           </div>
           <ul className="space-y-3 mb-8 flex-1">
-            {[
-              'Pro版全部功能', 'API接口接入', '批量处理', '专属客服经理', '自定义品牌', 'SLA服务保障',
-            ].map((f) => (
+            {['咖啡版全部功能', '专属致谢名单', '新功能抢先体验', '优先技术支持'].map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
-                <Check className="w-4 h-4 text-indigo-500 flex-shrink-0" /> {f}
+                <Check className="w-4 h-4 text-pink-500 flex-shrink-0" /> {f}
               </li>
             ))}
           </ul>
-          <button onClick={() => handleBuy(PLANS.yearly)}
-            className="w-full py-3.5 rounded-2xl border-2 border-indigo-200 text-indigo-700 font-bold text-center hover:bg-indigo-50 transition">
-            联系客服 (¥{PLANS.yearly.amount}/年)
+          <button onClick={() => handleBuy(PLANS.monthly)}
+            className="w-full py-3.5 rounded-2xl border-2 border-pink-200 text-pink-600 font-bold text-center hover:bg-pink-50 transition">
+            🧋 请杯奶茶 (¥{PLANS.monthly.amount})
           </button>
         </div>
       </div>

@@ -12,9 +12,8 @@ export interface PricePlan {
 
 // 三档定价方案
 export const PLANS: Record<string, PricePlan> = {
-  single: { id: 'single', amount: 9.9, label: '单次使用', desc: '单次高清无水印下载/使用' },
-  monthly: { id: 'monthly', amount: 29, label: 'Pro月卡', desc: '30天无限使用全部工具' },
-  yearly: { id: 'yearly', amount: 199, label: '企业年卡', desc: '365天无限使用 + API接入 + 批量处理' },
+  single: { id: 'single', amount: 3.3, label: '一杯咖啡', desc: '表示感谢，支持我们继续开发' },
+  monthly: { id: 'monthly', amount: 6.6, label: '一杯奶茶', desc: '大力支持，解锁全部高级功能' },
 };
 
 // 每个工具的单独定价（可覆盖默认）
