@@ -25,7 +25,7 @@ const TOOLS = [
 ];
 
 const CATEGORIES = [
-  { key:'全部', label:'全部工具', icon:Grid3X3, count:12 },
+  { key:'全部', label:'全部工具', icon:Grid3X3, count:18 },
   { key:'AI图像', label:'AI图像', icon:Image, count:3 },
   { key:'AI写作', label:'AI写作', icon:PenLine, count:5 },
   { key:'AI办公', label:'AI办公', icon:Briefcase, count:6 },
@@ -163,36 +163,75 @@ export default function Home() {
           ))}
         </div>
 
-        {/* ===== 外部推荐 ===== */}
+        {/* ===== AI导航 — 外部精选 ===== */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-6">
             <div className="w-1 h-5 rounded-full bg-gradient-to-b from-yellow-500 to-orange-500" />
-            <h2 className="text-lg font-bold text-white">🌐 精选推荐</h2>
-            <span className="text-xs text-slate-600">优质第三方AI工具</span>
+            <h2 className="text-lg font-bold text-white">🌐 AI工具导航</h2>
+            <span className="text-xs text-slate-600">精选 30+ 优质第三方AI工具</span>
           </div>
-          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
-            {[
-              { name:'ChatGPT', desc:'OpenAI 出品的顶级AI对话助手', cat:'AI对话', url:'https://chat.openai.com' },
-              { name:'Midjourney', desc:'最强AI绘画工具，艺术级出图', cat:'AI绘画', url:'https://www.midjourney.com' },
-              { name:'通义千问', desc:'阿里云自研大语言模型', cat:'AI对话', url:'https://tongyi.aliyun.com' },
-              { name:'文心一言', desc:'百度知识增强大语言模型', cat:'AI对话', url:'https://yiyan.baidu.com' },
-              { name:'讯飞星火', desc:'科大讯飞认知大模型', cat:'AI对话', url:'https://xinghuo.xfyun.cn' },
-              { name:'Canva', desc:'AI在线设计平台，人人都是设计师', cat:'AI设计', url:'https://www.canva.cn' },
-              { name:'Runway', desc:'AI视频生成和编辑工具', cat:'AI视频', url:'https://runwayml.com' },
-              { name:'Cursor', desc:'AI编程IDE，比Copilot更强大', cat:'AI编程', url:'https://cursor.sh' },
-            ].map(ext => (
-              <a key={ext.name} href={ext.url} target="_blank" rel="noopener"
-                className="block bg-white/[0.02] border border-white/5 rounded-xl p-4 hover:bg-white/[0.05] hover:border-yellow-500/20 transition-all group">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-sm font-semibold text-white group-hover:text-yellow-300 transition-colors">{ext.name}</span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 text-slate-500">{ext.cat}</span>
-                  <span className="ml-auto text-[10px] text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity">🔗</span>
-                </div>
-                <p className="text-xs text-slate-500 leading-relaxed">{ext.desc}</p>
-              </a>
-            ))}
+
+          {/* AI对话 */}
+          <div className="mb-6">
+            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">💬 AI对话 / 大模型</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-2">
+              {[
+                { n:'ChatGPT', u:'https://chat.openai.com' }, { n:'Claude', u:'https://claude.ai' },
+                { n:'通义千问', u:'https://tongyi.aliyun.com' }, { n:'文心一言', u:'https://yiyan.baidu.com' },
+                { n:'讯飞星火', u:'https://xinghuo.xfyun.cn' }, { n:'Kimi', u:'https://kimi.moonshot.cn' },
+                { n:'DeepSeek', u:'https://chat.deepseek.com' }, { n:'豆包', u:'https://www.doubao.com' },
+                { n:'智谱清言', u:'https://chatglm.cn' }, { n:'腾讯元宝', u:'https://yuanbao.tencent.com' },
+              ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
+            </div>
           </div>
-          <p className="text-center text-xs text-slate-600 mt-4">以上为第三方工具链接，点击跳转到对应官网</p>
+
+          {/* AI图像 + AI视频 */}
+          <div className="grid sm:grid-cols-2 gap-6 mb-6">
+            <div>
+              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🎨 AI绘画 / 设计</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { n:'Midjourney', u:'https://www.midjourney.com' }, { n:'Stable Diffusion', u:'https://stability.ai' },
+                  { n:'DALL·E 2', u:'https://openai.com/dall-e-2' }, { n:'文心一格', u:'https://yige.baidu.com' },
+                  { n:'Canva', u:'https://www.canva.cn' }, { n:'稿定AI', u:'https://www.gaoding.com' },
+                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🎬 AI视频 / 音频</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { n:'Runway', u:'https://runwayml.com' }, { n:'即梦AI', u:'https://jimeng.jianying.com' },
+                  { n:'可灵', u:'https://kling.kuaishou.com' }, { n:'剪映', u:'https://www.capcut.cn' },
+                  { n:'Suno', u:'https://suno.com' }, { n:'剪画', u:'https://www.jianhua.ai' },
+                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
+              </div>
+            </div>
+          </div>
+
+          {/* AI编程 + AI办公 */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">💻 AI编程</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { n:'GitHub Copilot', u:'https://github.com/features/copilot' }, { n:'Cursor', u:'https://cursor.sh' },
+                  { n:'通义灵码', u:'https://tongyi.aliyun.com/lingma' }, { n:'CodeGeex', u:'https://codegeex.cn' },
+                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">📊 AI办公 / 效率</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  { n:'Notion AI', u:'https://www.notion.so/product/ai' }, { n:'Gamma', u:'https://gamma.app' },
+                  { n:'AiPPT', u:'https://www.aippt.cn' }, { n:'万知', u:'https://www.wanzi.ink' },
+                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
+              </div>
+            </div>
+          </div>
+
+          <p className="text-center text-xs text-slate-600 mt-6">以上为第三方工具链接 · 持续更新中 · 点击直达官网</p>
         </div>
 
         {/* Footer CTA */}
