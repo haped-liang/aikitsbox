@@ -3,12 +3,12 @@ import './globals.css';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'AI工具箱 - 12款AI工具免费在线使用 | aikitsbox.cn',
-  description: '精选12款实用AI工具：老照片修复、AI写作、图片增强、AI抠图、简历优化、宠物医生、AI起名、食谱生成、合同审查、PPT生成、AI翻译、语音转文字，全部免费在线使用。',
+  title: 'AI工具箱 - 18款AI工具免费在线使用 | aikitsbox.cn',
+  description: '精选18款实用AI工具：老照片修复、AI写作、图片增强、AI抠图、简历优化、宠物医生、AI起名、食谱生成、合同审查、PPT生成、AI翻译、语音转文字，全部免费在线使用。',
   keywords: 'AI工具,老照片修复,AI写作,图片增强,AI抠图,简历优化,AI起名,宠物医生,食谱生成,合同审查,PPT生成,AI翻译,语音转文字,免费AI,在线工具',
   openGraph: {
-    title: 'AI工具箱 - 12款AI工具免费在线使用',
-    description: '精选12款实用AI工具，覆盖图像、写作、办公、生活四大场景，全部免费在线使用。',
+    title: 'AI工具箱 - 18款AI工具免费在线使用',
+    description: '精选18款实用AI工具，覆盖图像、写作、办公、生活四大场景，全部免费在线使用。',
     url: 'https://aikitsbox.cn',
     type: 'website',
   },

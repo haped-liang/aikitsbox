@@ -30,6 +30,12 @@ export const TOOL_PRICING: Record<string, { amount: number; label: string }> = {
   'ppt': { amount: 19.9, label: '完整PPT源文件 / 次' },
   'translate': { amount: 9.9, label: '专业翻译 / 次' },
   'voice-notes': { amount: 9.9, label: '完整转写 / 次' },
+  'email-writer': { amount: 3.3, label: '邮件生成 / 封' },
+  'text-polish': { amount: 3.3, label: '文案润色 / 次' },
+  'text-summary': { amount: 3.3, label: '文本摘要 / 次' },
+  'code-helper': { amount: 3.3, label: '代码处理 / 次' },
+  'weekly-report': { amount: 3.3, label: '周报生成 / 次' },
+  'greeting-card': { amount: 3.3, label: '祝福语 / 条' },
 };
 
 /** 获取工具定价（带默认值） */

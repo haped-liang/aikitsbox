@@ -16,14 +16,20 @@ const TOOLS = [
   { id:'baby-name', name:'AI起名大师', desc:'宝宝起名·公司起名·品牌命名，融合五行诗词', icon:'👶', cat:'AI生活', badge:'', href:'/tools/baby-name/', color:'from-amber-500 to-orange-600', glow:'shadow-amber-500/20' },
   { id:'pet-health', name:'AI宠物医生', desc:'症状自查·AI分析病因·护理建议', icon:'🐾', cat:'AI生活', badge:'', href:'/tools/pet-health/', color:'from-red-500 to-rose-600', glow:'shadow-red-500/20' },
   { id:'recipe', name:'AI食谱生成', desc:'输入食材→AI推荐菜谱+完整做法', icon:'🍳', cat:'AI生活', badge:'', href:'/tools/recipe/', color:'from-orange-500 to-red-600', glow:'shadow-orange-500/20' },
+  { id:'email-writer', name:'AI邮件助手', desc:'自动生成专业商务邮件，支持多种语气场景', icon:'📧', cat:'AI写作', badge:'新', href:'/tools/email-writer/', color:'from-blue-500 to-cyan-600', glow:'shadow-blue-500/20' },
+  { id:'text-polish', name:'AI文案润色', desc:'改写/扩写/缩写/纠错，一键优化文本', icon:'✨', cat:'AI写作', badge:'新', href:'/tools/text-polish/', color:'from-purple-500 to-pink-600', glow:'shadow-purple-500/20' },
+  { id:'text-summary', name:'AI文本摘要', desc:'长文一键总结，多种格式提取核心信息', icon:'📝', cat:'AI写作', badge:'新', href:'/tools/text-summary/', color:'from-teal-500 to-cyan-600', glow:'shadow-teal-500/20' },
+  { id:'code-helper', name:'AI代码助手', desc:'生成/解释/调试/优化代码，多语言支持', icon:'💻', cat:'AI办公', badge:'新', href:'/tools/code-helper/', color:'from-green-500 to-emerald-600', glow:'shadow-green-500/20' },
+  { id:'weekly-report', name:'AI周报生成', desc:'输入工作内容→自动生成专业周报', icon:'📋', cat:'AI办公', badge:'新', href:'/tools/weekly-report/', color:'from-indigo-500 to-blue-600', glow:'shadow-indigo-500/20' },
+  { id:'greeting-card', name:'AI节日祝福', desc:'生成走心祝福语，多节日多风格', icon:'🎉', cat:'AI生活', badge:'新', href:'/tools/greeting-card/', color:'from-amber-500 to-orange-600', glow:'shadow-amber-500/20' },
 ];
 
 const CATEGORIES = [
   { key:'全部', label:'全部工具', icon:Grid3X3, count:12 },
   { key:'AI图像', label:'AI图像', icon:Image, count:3 },
-  { key:'AI写作', label:'AI写作', icon:PenLine, count:2 },
-  { key:'AI办公', label:'AI办公', icon:Briefcase, count:4 },
-  { key:'AI生活', label:'AI生活', icon:Baby, count:3 },
+  { key:'AI写作', label:'AI写作', icon:PenLine, count:5 },
+  { key:'AI办公', label:'AI办公', icon:Briefcase, count:6 },
+  { key:'AI生活', label:'AI生活', icon:Baby, count:4 },
 ];
 
 export default function Home() {
@@ -63,7 +69,7 @@ export default function Home() {
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 px-2">统计数据</div>
             <div className="space-y-2 px-2">
               {[
-                { icon:Zap, v:'12', l:'精品工具', c:'text-indigo-400' },
+                { icon:Zap, v:'18', l:'精品工具', c:'text-indigo-400' },
                 { icon:Shield, v:'免费', l:'无需注册', c:'text-green-400' },
                 { icon:TrendingUp, v:'每日', l:'持续更新', c:'text-amber-400' },
               ].map((s,i) => (
@@ -96,7 +102,7 @@ export default function Home() {
           <div className="relative max-w-4xl mx-auto px-6 py-16 sm:py-20 z-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm text-indigo-300 mb-6">
               <Sparkles className="w-3.5 h-3.5" />
-              12款精选AI工具 · 全部免费在线使用
+              18款精选AI工具 · 全部免费在线使用
             </div>
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
               AI<span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">工具箱</span>
@@ -155,6 +161,38 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* ===== 外部推荐 ===== */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-1 h-5 rounded-full bg-gradient-to-b from-yellow-500 to-orange-500" />
+            <h2 className="text-lg font-bold text-white">🌐 精选推荐</h2>
+            <span className="text-xs text-slate-600">优质第三方AI工具</span>
+          </div>
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3">
+            {[
+              { name:'ChatGPT', desc:'OpenAI 出品的顶级AI对话助手', cat:'AI对话', url:'https://chat.openai.com' },
+              { name:'Midjourney', desc:'最强AI绘画工具，艺术级出图', cat:'AI绘画', url:'https://www.midjourney.com' },
+              { name:'通义千问', desc:'阿里云自研大语言模型', cat:'AI对话', url:'https://tongyi.aliyun.com' },
+              { name:'文心一言', desc:'百度知识增强大语言模型', cat:'AI对话', url:'https://yiyan.baidu.com' },
+              { name:'讯飞星火', desc:'科大讯飞认知大模型', cat:'AI对话', url:'https://xinghuo.xfyun.cn' },
+              { name:'Canva', desc:'AI在线设计平台，人人都是设计师', cat:'AI设计', url:'https://www.canva.cn' },
+              { name:'Runway', desc:'AI视频生成和编辑工具', cat:'AI视频', url:'https://runwayml.com' },
+              { name:'Cursor', desc:'AI编程IDE，比Copilot更强大', cat:'AI编程', url:'https://cursor.sh' },
+            ].map(ext => (
+              <a key={ext.name} href={ext.url} target="_blank" rel="noopener"
+                className="block bg-white/[0.02] border border-white/5 rounded-xl p-4 hover:bg-white/[0.05] hover:border-yellow-500/20 transition-all group">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="text-sm font-semibold text-white group-hover:text-yellow-300 transition-colors">{ext.name}</span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 text-slate-500">{ext.cat}</span>
+                  <span className="ml-auto text-[10px] text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity">🔗</span>
+                </div>
+                <p className="text-xs text-slate-500 leading-relaxed">{ext.desc}</p>
+              </a>
+            ))}
+          </div>
+          <p className="text-center text-xs text-slate-600 mt-4">以上为第三方工具链接，点击跳转到对应官网</p>
         </div>
 
         {/* Footer CTA */}
