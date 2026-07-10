@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { Sparkles, Zap, Shield, TrendingUp, ArrowRight, Heart, Coffee, Grid3X3, Image, PenLine, Briefcase, Baby } from 'lucide-react';
+import { Sparkles, Zap, Shield, TrendingUp, ArrowRight, Heart, Coffee, Grid3X3, Image, PenLine, Briefcase, Baby, Compass } from 'lucide-react';
 
 const TOOLS = [
   { id:'photo-restore', name:'老照片修复', desc:'AI修复模糊、破损、黑白老照片，一键还原高清', icon:'📸', cat:'AI图像', badge:'🔥', href:'/tools/photo-restore/', color:'from-rose-500 to-pink-600', glow:'shadow-rose-500/20' },
@@ -65,7 +65,15 @@ export default function Home() {
             ))}
           </nav>
 
-          <div className="mt-6 pt-6 border-t border-white/5">
+          <div className="mt-4 pt-4 border-t border-white/5">
+            <Link href="/nav/" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-white/[0.03] border border-transparent hover:border-white/5 transition">
+              <Compass className="w-4 h-4 flex-shrink-0" />
+              <span>AI工具导航</span>
+              <span className="ml-auto text-[10px] text-slate-600">30+</span>
+            </Link>
+          </div>
+
+          <div className="mt-4 pt-4 border-t border-white/5">
             <div className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3 px-2">统计数据</div>
             <div className="space-y-2 px-2">
               {[
@@ -163,76 +171,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* ===== AI导航 — 外部精选 ===== */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-1 h-5 rounded-full bg-gradient-to-b from-yellow-500 to-orange-500" />
-            <h2 className="text-lg font-bold text-white">🌐 AI工具导航</h2>
-            <span className="text-xs text-slate-600">精选 30+ 优质第三方AI工具</span>
-          </div>
-
-          {/* AI对话 */}
-          <div className="mb-6">
-            <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">💬 AI对话 / 大模型</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-2">
-              {[
-                { n:'ChatGPT', u:'https://chat.openai.com' }, { n:'Claude', u:'https://claude.ai' },
-                { n:'通义千问', u:'https://tongyi.aliyun.com' }, { n:'文心一言', u:'https://yiyan.baidu.com' },
-                { n:'讯飞星火', u:'https://xinghuo.xfyun.cn' }, { n:'Kimi', u:'https://kimi.moonshot.cn' },
-                { n:'DeepSeek', u:'https://chat.deepseek.com' }, { n:'豆包', u:'https://www.doubao.com' },
-                { n:'智谱清言', u:'https://chatglm.cn' }, { n:'腾讯元宝', u:'https://yuanbao.tencent.com' },
-              ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
-            </div>
-          </div>
-
-          {/* AI图像 + AI视频 */}
-          <div className="grid sm:grid-cols-2 gap-6 mb-6">
-            <div>
-              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🎨 AI绘画 / 设计</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { n:'Midjourney', u:'https://www.midjourney.com' }, { n:'Stable Diffusion', u:'https://stability.ai' },
-                  { n:'DALL·E 2', u:'https://openai.com/dall-e-2' }, { n:'文心一格', u:'https://yige.baidu.com' },
-                  { n:'Canva', u:'https://www.canva.cn' }, { n:'稿定AI', u:'https://www.gaoding.com' },
-                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">🎬 AI视频 / 音频</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { n:'Runway', u:'https://runwayml.com' }, { n:'即梦AI', u:'https://jimeng.jianying.com' },
-                  { n:'可灵', u:'https://kling.kuaishou.com' }, { n:'剪映', u:'https://www.capcut.cn' },
-                  { n:'Suno', u:'https://suno.com' }, { n:'剪画', u:'https://www.jianhua.ai' },
-                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
-              </div>
-            </div>
-          </div>
-
-          {/* AI编程 + AI办公 */}
-          <div className="grid sm:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">💻 AI编程</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { n:'GitHub Copilot', u:'https://github.com/features/copilot' }, { n:'Cursor', u:'https://cursor.sh' },
-                  { n:'通义灵码', u:'https://tongyi.aliyun.com/lingma' }, { n:'CodeGeex', u:'https://codegeex.cn' },
-                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
-              </div>
-            </div>
-            <div>
-              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">📊 AI办公 / 效率</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { n:'Notion AI', u:'https://www.notion.so/product/ai' }, { n:'Gamma', u:'https://gamma.app' },
-                  { n:'AiPPT', u:'https://www.aippt.cn' }, { n:'万知', u:'https://www.wanzi.ink' },
-                ].map(t => <a key={t.n} href={t.u} target="_blank" rel="noopener" className="px-3 py-2 rounded-lg bg-white/[0.02] border border-white/5 text-xs text-slate-400 hover:text-white hover:bg-white/[0.06] hover:border-white/10 transition text-center truncate">{t.n}</a>)}
-              </div>
-            </div>
-          </div>
-
-          <p className="text-center text-xs text-slate-600 mt-6">以上为第三方工具链接 · 持续更新中 · 点击直达官网</p>
-        </div>
 
         {/* Footer CTA */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-16">
